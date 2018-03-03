@@ -1,0 +1,98 @@
+---
+
+- hosts: localhost
+  connection: local
+  vars:
+    setup_i3: false
+  tasks:
+    - name: Configure keyboard options
+      shell: gsettings set org.mate.peripherals-keyboard-xkb.kbd options "['grp\tgrp:alt_shift_toggle','caps\tcaps:ctrl_modifier']"
+
+    - name: Change foreground for keyboard indicator
+      shell: gsettings set org.mate.peripherals-keyboard-xkb.indicator foreground-color "100 100 100"
+      when: setup_i3 == true
+
+    - name: Configure keyboard repeat rate
+      shell: dconf write /org/mate/desktop/peripherals/keyboard/rate 60
+
+    - name: Configure keyboard delay
+      shell: dconf write /org/mate/desktop/peripherals/keyboard/delay 200
+
+
+    - name: Setup RPM fusion free repo
+      block:
+      - dnf:
+          name: "{{ item }}"
+          state: present
+        with_items:
+          - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm
+          - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm
+
+      - name: Enable dawid/better_fonts copr
+        shell: dnf -y copr enable dawid/better_fonts
+
+      - name: Install Better fonts
+        dnf:
+          name: "{{ item }}"
+          state: present
+        with_items:
+          - fontconfig-enhanced-defaults 
+          - fontconfig-font-replacements
+      become: yes
+
+    - name: Unpack Dropbox archive
+      unarchive:
+        src: https://www.dropbox.com/download?plat=lnx.x86_64
+        dest: "{{ ansible_user_dir }}"
+        creates: "{{ ansible_user_dir}}/.dropbox-dist"
+        remote_src: yes
+    
+    - name: Ensure ~/bin dir
+      file:
+        path: "{{ ansible_user_dir }}/bin"
+        state: directory
+
+    - name: Install dropbox control utility
+      get_url:
+        url: https://www.dropbox.com/download?dl=packages/dropbox.py
+        dest: "{{ ansible_user_dir }}/bin/dropbox"
+        mode: 0755
+
+    - name: Enable Dropbox autostart
+      shell: dropbox autostart y
+
+    - name: Start Dropbox
+      shell: dropbox start
+
+    - name: Install packages
+      dnf:
+        name: "{{ item }}"
+        state: installed
+      become: yes
+      with_items:
+        - sysstat
+        - tmux
+        - google-roboto-mono-fonts
+        - git
+        - tig
+        - make
+        - gcc
+        - clang
+        - patch
+        - meld
+        - redshift
+        - redshift-gtk
+        - mutt
+        - perl-Digest-SHA # shasum
+        - clipit
+        - NetworkManager-openvpn
+        - ctags
+        - mc
+        - scrot
+        - geeqie
+        - the_silver_searcher
+        - vlc
+
+      # go from golang.org
+      # docker, create group docker and add user to docker group
+      # docker-compose
