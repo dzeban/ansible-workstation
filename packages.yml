@@ -1,0 +1,32 @@
+---
+
+- name: Install packages
+  dnf:
+    name: "{{ item }}"
+    state: installed
+  become: yes
+  with_items:
+    - sysstat
+    - tmux
+    - google-roboto-mono-fonts
+    - git
+    - tig
+    - make
+    - gcc
+    - clang
+    - patch
+    - meld
+    - redshift
+    - redshift-gtk
+    - mutt
+    - perl-Digest-SHA # shasum
+    - clipit
+    - NetworkManager-openvpn
+    - ctags
+    - mc
+    - scrot
+    - geeqie
+    - the_silver_searcher
+    - vlc
+    - hugo
+

@@ -1,0 +1,8 @@
+This Go installation is managed by Ansible role alexdzyoba.golang - 
+https://github.com/alexdzyoba/ansible-golang.
+
+This file is needed to avoid unnecessary overwriting of go toolchain files on
+each run of this role, so making it idempotent.
+
+You can delete this file, but next time you run the role files will be
+overwritten.

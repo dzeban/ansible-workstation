@@ -1,0 +1,14 @@
+---
+- name: Configure keyboard options
+  shell: gsettings set org.mate.peripherals-keyboard-xkb.kbd options "['grp\tgrp:alt_shift_toggle','caps\tcaps:ctrl_modifier']"
+
+- name: Change foreground for keyboard indicator
+  shell: gsettings set org.mate.peripherals-keyboard-xkb.indicator foreground-color "100 100 100"
+  when: setup_i3 == true
+
+- name: Configure keyboard repeat rate
+  shell: dconf write /org/mate/desktop/peripherals/keyboard/rate 60
+
+- name: Configure keyboard delay
+  shell: dconf write /org/mate/desktop/peripherals/keyboard/delay 200
+

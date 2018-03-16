@@ -1,0 +1,19 @@
+---
+
+- name: Ensure install directory
+  file:
+    path: "{{ golang_install_dir }}"
+    state: directory
+
+- name: Unpack golang toolchain
+  unarchive:
+    remote_src: yes
+    src: "{{ golang_download_url }}"
+    dest: "{{ golang_install_dir }}"
+    extra_opts: "--strip-components=1" # strip "go" dir because it's included in "golang_install_dir"
+    creates: "{{ golang_install_dir}}/ansible_managed_{{ golang_version }}"
+
+- name: Put file to avoid unnecessary update
+  copy:
+    src: files/ansible-managed
+    dest: "{{ golang_install_dir}}/ansible_managed_{{ golang_version }}"

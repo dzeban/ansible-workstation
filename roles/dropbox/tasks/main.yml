@@ -1,0 +1,25 @@
+---
+- name: Unpack Dropbox archive
+  unarchive:
+    src: https://www.dropbox.com/download?plat=lnx.x86_64
+    dest: "{{ ansible_user_dir }}"
+    creates: "{{ ansible_user_dir}}/.dropbox-dist"
+    remote_src: yes
+
+- name: Ensure ~/bin dir
+  file:
+    path: "{{ ansible_user_dir }}/bin"
+    state: directory
+
+- name: Install dropbox control utility
+  get_url:
+    url: https://www.dropbox.com/download?dl=packages/dropbox.py
+    dest: "{{ ansible_user_dir }}/bin/dropbox"
+    mode: 0755
+
+- name: Enable Dropbox autostart
+  shell: dropbox autostart y
+
+- name: Start Dropbox
+  shell: dropbox start
+
