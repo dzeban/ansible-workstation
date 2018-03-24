@@ -12,15 +12,26 @@
     - include_tasks: fonts.yml
     - include_tasks: keyboard.yml
 
-    - include_role:
-        name: dropbox
+    - include_role: name=dropbox
+    - include_role: name=vscode
 
     - include_role:
         name: golang
       vars:
         golang_version: "1.10"
+
+    - include_role:
+        name: i3-mate
+      vars:
+        i3_mate_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/wm/.i3"
   
-      # vs code
+    - name: Remove urxvt because it's overriding mate-terminal as i3-sensible-terminal
+      become: yes
+      package:
+        name: rxvt-unicode
+        state: absent
+
+      # vim + neovim + configs
       # docker, create group docker and add user to docker group
       # docker-compose
       # terraform
