@@ -1,0 +1,23 @@
+---
+
+- name: Import VS Code repo key
+  become: yes
+  rpm_key:
+    state: present
+    key: "{{ vscode_rpm_repo_key }}"
+
+- name: Add VS Code repository
+  become: yes
+  yum_repository:
+    name: code
+    description: Visual Studio Code
+    baseurl: "{{ vscode_rpm_repo_baseurl }}"
+    enabled: 1
+    gpgcheck: yes
+    gpgkey: "{{ vscode_rpm_repo_key }}"
+
+- name: Install VS Code
+  become: yes
+  package:
+    name: code
+    state: latest
