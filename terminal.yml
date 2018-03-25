@@ -1,0 +1,9 @@
+---
+
+- name: Configure MATE terminal
+  shell: "{{ command }}"
+  with_items:
+    - dconf write /org/mate/terminal/profiles/default/font "'Monospace 9'"
+    - dconf write /org/mate/terminal/profiles/default/scrollbar-position  "'hidden'"
+  loop_control:
+    loop_var: command
