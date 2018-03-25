@@ -4,7 +4,6 @@
 
 - name: Change foreground for keyboard indicator
   shell: gsettings set org.mate.peripherals-keyboard-xkb.indicator foreground-color "100 100 100"
-  when: setup_i3 == true
 
 - name: Configure keyboard repeat rate
   shell: dconf write /org/mate/desktop/peripherals/keyboard/rate 60
