@@ -4,6 +4,7 @@
   connection: local
   vars:
     shell_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/shell"
+    vim_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/apps/vim"
     i3_mate_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/wm/.i3"
     golang_version: "1.10"
   tasks:
@@ -15,12 +16,14 @@
     - include_tasks: keyboard.yml
     - include_tasks: shell.yml
     - include_tasks: terminal.yml
+    - include_tasks: vim.yml
 
     - include_role: name=dropbox
     - include_role: name=vscode
     - include_role: name=golang
     - include_role: name=i3-mate
-  
+    - include_role: name=neovim
+
     - name: Remove urxvt because it's overriding mate-terminal as i3-sensible-terminal
       become: yes
       package:
