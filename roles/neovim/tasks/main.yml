@@ -13,15 +13,6 @@
     dest: "{{ neovim_bin }}"
     mode: 0755
 
-- name: Install Neovim packages
-  become: yes
-  package:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - python2-neovim
-    - python3-neovim
-
 - name: Ensure config dir
   file:
     path: "{{ ansible_user_dir }}/.config/nvim"
