@@ -13,6 +13,16 @@
     dest: "{{ neovim_bin }}"
     mode: 0755
 
+- name: Ensure python modules
+  pip:
+    name: [pynvim, neovim]
+    state: latest
+    executable: "{{ item }}"
+  loop:
+    - pip2
+    - pip3
+  become: yes
+
 - name: Ensure config dir
   file:
     path: "{{ ansible_user_dir }}/.config/nvim"
