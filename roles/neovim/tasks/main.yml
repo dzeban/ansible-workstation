@@ -1,12 +1,24 @@
 ---
 
+- name: Download Neovim appimage
+  get_url:
+    url: "{{ neovim_appimage_url }}"
+    dest: "{{ neovim_dest_dir }}"
+    mode: 0755
+
+- name: Symlink nvim appimage
+  file:
+    state: link
+    src: "{{ neovim_dest_dir }}/nvim.appimage"
+    dest: "{{ neovim_bin }}"
+    mode: 0755
+
 - name: Install Neovim packages
   become: yes
   package:
     name: "{{ item }}"
     state: latest
   with_items:
-    - neovim
     - python2-neovim
     - python3-neovim
 

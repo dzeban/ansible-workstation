@@ -1,0 +1,5 @@
+---
+neovim_version: "0.3.4"
+neovim_appimage_url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim.appimage"
+neovim_dest_dir: "{{ ansible_user_dir }}"
+neovim_bin: /usr/local/bin/nvim

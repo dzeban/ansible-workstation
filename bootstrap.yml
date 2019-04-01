@@ -3,10 +3,10 @@
 - hosts: localhost
   connection: local
   vars:
-    shell_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/shell"
-    vim_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/apps/vim"
+    neovim_dest_dir: "{{ ansible_user_dir }}/soft"
+    neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
     i3_mate_config_dir: "{{ ansible_user_dir }}/Dropbox/misc/dotfiles/wm/.i3"
-    golang_version: "1.10"
+    golang_version: "1.12"
   tasks:
     - include_role:
         name: rpmfusion
@@ -27,8 +27,6 @@
         name: rxvt-unicode
         state: absent
 
-
-      # vim + neovim + configs
       # docker, create group docker and add user to docker group
       # docker-compose
       # terraform
