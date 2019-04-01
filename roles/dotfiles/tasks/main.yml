@@ -1,0 +1,10 @@
+---
+- name: Clone dotfile git repo
+  git:
+    repo: git@github.com:dzeban/dotfiles.git
+    dest: "{{ ansible_user_dir }}/.dotfiles"
+    update: no
+
+- name: Deploy dotfiles
+  make:
+    chdir: "{{ ansible_user_dir }}/.dotfiles"

@@ -20,6 +20,7 @@
     - include_role: name=golang
     - include_role: name=i3-mate
     - include_role: name=neovim
+    - include_role: name=dotfiles
 
     - name: Remove urxvt because it's overriding mate-terminal as i3-sensible-terminal
       become: yes
