@@ -1,4 +1,0 @@
----
-
-vscode_rpm_repo_key: https://packages.microsoft.com/keys/microsoft.asc
-vscode_rpm_repo_baseurl: https://packages.microsoft.com/yumrepos/vscode

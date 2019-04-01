@@ -14,12 +14,9 @@
     - include_tasks: packages.yml
     - include_tasks: fonts.yml
     - include_tasks: keyboard.yml
-    - include_tasks: shell.yml
     - include_tasks: terminal.yml
-    - include_tasks: vim.yml
 
     - include_role: name=dropbox
-    - include_role: name=vscode
     - include_role: name=golang
     - include_role: name=i3-mate
     - include_role: name=neovim
@@ -29,6 +26,7 @@
       package:
         name: rxvt-unicode
         state: absent
+
 
       # vim + neovim + configs
       # docker, create group docker and add user to docker group
