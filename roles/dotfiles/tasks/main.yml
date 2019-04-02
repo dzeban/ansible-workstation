@@ -6,5 +6,6 @@
     update: no
 
 - name: Deploy dotfiles
-  make:
+  shell: "yes | make"
+  args:
     chdir: "{{ ansible_user_dir }}/.dotfiles"
