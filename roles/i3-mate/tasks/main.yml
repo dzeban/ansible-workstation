@@ -6,13 +6,6 @@
     name: i3
     state: installed
 
-- name: Link configs
-  file:
-    state: link
-    src: "{{ i3_mate_config_dir }}"
-    dest: "{{ ansible_user_dir }}/.i3"
-  when: i3_mate_config_dir is defined
-
 - name: Set i3 as MATE window manager
   shell: dconf write /org/mate/desktop/session/required-components/windowmanager "'i3'"
 
