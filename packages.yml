@@ -23,6 +23,7 @@
     - clipit
     - NetworkManager-openvpn
     - ctags
+    - cscope
     - mc
     - scrot
     - geeqie
