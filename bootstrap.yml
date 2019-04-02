@@ -15,6 +15,7 @@
     - include_tasks: fonts.yml
     - include_tasks: keyboard.yml
     - include_tasks: terminal.yml
+    - include_tasks: selinux.yml
 
     - include_role: name=dropbox
     - include_role: name=golang
