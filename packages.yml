@@ -31,4 +31,7 @@
     - hugo
     - pinta
     - jq
+    - fzf
+    - fd-find
+    - levien-inconsolata-fonts
 
