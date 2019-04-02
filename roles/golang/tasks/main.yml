@@ -17,3 +17,9 @@
   copy:
     src: files/ansible-managed
     dest: "{{ golang_install_dir}}/ansible_managed_{{ golang_version }}"
+
+- name: Link current go version
+  file:
+    state: link
+    src: "{{ golang_install_dir }}"
+    dest: "{{ ansible_user_dir }}/soft/go"
