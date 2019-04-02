@@ -1,0 +1,7 @@
+---
+docker_repo: "https://download.docker.com/linux/fedora/docker-ce.repo"
+docker_packages: ["docker-ce", "docker-ce-cli", "containerd.io"]
+docker_compose_version: "1.24.0"
+docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+docker_compose_dest: /usr/local/bin/docker-compose
+
