@@ -24,5 +24,9 @@
         name: docker
         apply:
           become: yes
+    - include_role:
+        name: gcloud
+        apply:
+          become: yes
 
       # gcloud, kubectl, terraform
