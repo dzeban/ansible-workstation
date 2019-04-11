@@ -21,6 +21,7 @@
     - mutt
     - perl-Digest-SHA # shasum
     - clipit
+    - xclip # for Vim clipboard
     - NetworkManager-openvpn
     - ctags
     - cscope
