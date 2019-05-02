@@ -37,3 +37,10 @@
     - fd-find
     - levien-inconsolata-fonts
 
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+    state: present
+    extra_args: --user
+  with_items:
+    - http-prompt
