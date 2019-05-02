@@ -29,4 +29,11 @@
         apply:
           become: yes
 
+    - name: Set fn mode for Macbooks
+      copy:
+        content: "options hid_apple fnmode=2\n"
+        dest: /etc/modprobe.d/hid_apple.conf
+      become: yes
+      when: "{{ 'macbook' in (ansible_product_name | lower) }}"
+
       # gcloud, kubectl, terraform
