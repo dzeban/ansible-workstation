@@ -9,25 +9,41 @@
     keyboard_repeat_rate: 60
     keyboard_delay: 200
   tasks:
-    - include_role: name=rpmfusion
-    - include_role: name=packages
-    - include_role: name=fonts
-    - include_role: name=keyboard
-    - include_role: name=terminal
-    - include_role: name=dropbox
-    - include_role: name=golang
-    - include_role: name=i3-mate
-    - include_role: name=neovim
-    - include_role: name=dotfiles
-    - include_role:
-        name: docker
-        apply:
-          become: yes
+    - import_role: name=rpmfusion
+      tags: packages
 
-    - include_role:
-        name: gcloud
-        apply:
-          become: yes
+    - import_role: name=packages
+      tags: packages
+
+    - import_role: name=fonts
+      tags: fonts
+
+    - import_role: name=keyboard
+      tags: keyboard
+
+    - import_role: name=terminal
+      tags: terminal
+
+    - import_role: name=dropbox
+      tags: dropbox
+
+    - import_role: name=golang
+      tags: golang
+
+    - import_role: name=i3-mate
+      tags: i3
+
+    - import_role: name=neovim
+      tags: vim
+
+    - import_role: name=dotfiles
+      tags: dotfiles
+
+    - import_role: name=docker
+      tags: docker
+
+    - import_role: name=gcloud
+      tags: gcloud
 
     - name: Disable SELinux
       become: yes
@@ -35,5 +51,6 @@
         path: /etc/selinux/config
         regexp: '^SELINUX='
         line: 'SELINUX=disabled'
+      tags: system
 
-      # gcloud, kubectl, terraform
+      # terraform
