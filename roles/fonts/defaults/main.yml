@@ -1,0 +1,5 @@
+---
+fonts_copr: dawid/better_fonts
+fonts_packages: 
+  - fontconfig-enhanced-defaults 
+  - fontconfig-font-replacements

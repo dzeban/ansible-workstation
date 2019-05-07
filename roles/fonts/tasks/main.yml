@@ -1,0 +1,10 @@
+---
+- name: Enable better fonts copr
+  command: dnf -y copr enable {{ fonts_copr }}
+  args:
+    warn: no # because dnf module doesn't support copr
+
+- name: Install better fonts packages
+  dnf:
+    name: "{{ fonts_packages }}"
+    state: latest
