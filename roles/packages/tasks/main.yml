@@ -1,0 +1,12 @@
+---
+- name: Install packages
+  dnf:
+    name: "{{ packages_system }}"
+    state: installed
+  become: yes
+
+- name: Install pip packages
+  pip:
+    name: "{{ packages_pip }}"
+    state: present
+    extra_args: --user

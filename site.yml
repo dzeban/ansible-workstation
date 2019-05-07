@@ -7,14 +7,20 @@
     neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
     golang_version: "1.12"
   tasks:
-    - include_role: name=rpmfusion
+    - include_role: 
+        name: rpmfusion
+      tags: packages
+
+    - include_role:
+        name: packages
+      tags: packages
+
     - include_role:
         name: fonts
         apply:
           become: yes
       tags: fonts
 
-    - include_tasks: packages.yml
     - include_tasks: keyboard.yml
     - include_tasks: terminal.yml
     - include_tasks: selinux.yml
