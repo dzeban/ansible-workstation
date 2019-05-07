@@ -2,8 +2,6 @@
 - name: Configure MATE terminal
   command: "{{ item }}"
   loop:
-    - dconf write /org/mate/terminal/profiles/default/font "'{{ terminal_font }}'"
-    - dconf write /org/mate/terminal/profiles/default/scrollbar-position  "'hidden'"
     - dconf write /org/mate/terminal/keybindings/full-screen "'disabled'"
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1648170
