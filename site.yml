@@ -25,7 +25,10 @@
         name: keyboard
       tags: keyboard
 
-    - include_tasks: terminal.yml
+    - include_role: 
+        name: terminal
+      tags: terminal
+
     - include_tasks: selinux.yml
 
     - include_role: name=dropbox
