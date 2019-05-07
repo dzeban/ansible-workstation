@@ -7,8 +7,10 @@
     baseurl: "{{ gcloud_repo }}"
     gpgcheck: yes
     gpgkey: "{{ gcloud_gpg_keys }}"
+  become: yes
 
 - name: Install google-cloud-sdk
   dnf:
     name: ["google-cloud-sdk", "kubectl"]
     state: present
+  become: yes
