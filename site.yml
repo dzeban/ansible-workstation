@@ -6,6 +6,8 @@
     neovim_dest_dir: "{{ ansible_user_dir }}/soft"
     neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
     golang_version: "1.12"
+    keyboard_repeat_rate: 60
+    keyboard_delay: 200
   tasks:
     - include_role: 
         name: rpmfusion
@@ -19,7 +21,10 @@
         name: fonts
       tags: fonts
 
-    - include_tasks: keyboard.yml
+    - include_role: 
+        name: keyboard
+      tags: keyboard
+
     - include_tasks: terminal.yml
     - include_tasks: selinux.yml
 
@@ -37,12 +42,5 @@
         name: gcloud
         apply:
           become: yes
-
-    - name: Set fn mode for Macbooks
-      copy:
-        content: "options hid_apple fnmode=2\n"
-        dest: /etc/modprobe.d/hid_apple.conf
-      become: yes
-      when: "{{ 'macbook' in (ansible_product_name | lower) }}"
 
       # gcloud, kubectl, terraform

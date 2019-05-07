@@ -1,0 +1,5 @@
+---
+keyboard_options: "['grp\tgrp:alt_shift_toggle','caps\tcaps:ctrl_modifier']"
+keyboard_indicator_foreground_color: "100 100 100"
+keyboard_repeat_rate: 30
+keyboard_delay: 500
