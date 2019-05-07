@@ -3,8 +3,10 @@
   command: dnf -y copr enable {{ fonts_copr }}
   args:
     warn: no # because dnf module doesn't support copr
+  become: yes
 
 - name: Install better fonts packages
   dnf:
     name: "{{ fonts_packages }}"
     state: latest
+  become: yes

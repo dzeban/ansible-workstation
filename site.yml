@@ -17,8 +17,6 @@
 
     - include_role:
         name: fonts
-        apply:
-          become: yes
       tags: fonts
 
     - include_tasks: keyboard.yml
