@@ -1,2 +1,2 @@
 deploy:
-	ansible-playbook -K bootstrap.yml
+	ansible-playbook -K site.yml
