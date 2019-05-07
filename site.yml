@@ -9,28 +9,11 @@
     keyboard_repeat_rate: 60
     keyboard_delay: 200
   tasks:
-    - include_role: 
-        name: rpmfusion
-      tags: packages
-
-    - include_role:
-        name: packages
-      tags: packages
-
-    - include_role:
-        name: fonts
-      tags: fonts
-
-    - include_role: 
-        name: keyboard
-      tags: keyboard
-
-    - include_role: 
-        name: terminal
-      tags: terminal
-
-    - include_tasks: selinux.yml
-
+    - include_role: name=rpmfusion
+    - include_role: name=packages
+    - include_role: name=fonts
+    - include_role: name=keyboard
+    - include_role: name=terminal
     - include_role: name=dropbox
     - include_role: name=golang
     - include_role: name=i3-mate
