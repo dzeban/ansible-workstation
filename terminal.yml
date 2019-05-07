@@ -17,3 +17,11 @@
     regexp: "^MISSING "
     line: "MISSING 01;37 # ... and the files they point to"
   when: ansible_distribution == "Fedora" and ((ansible_distribution_version | int) > 27)
+
+- name: Ensure root prompt is red
+  become: yes
+  become_user: root
+  lineinfile:
+    path: /root/.bashrc
+    regexp: "^PS1="
+    line: PS1='\[\e[1;31m\]\u@\h [\w]\n$\[\e[0m\] '
