@@ -1,7 +1,13 @@
 ---
-# Reload kernel module for macbook keyboard to apply module params.
+# Reload kernel module for macbook keyboard to apply module params immediately.
 # Module is reloaded with `;` to always invoke modprobe even if module wasn't
 # initially loaded for some reason.
 - name: reload hid_apple
   shell: rmmod hid_apple; modprobe hid_apple
+  become: yes
+
+
+# Rebuild initramfs so hid_apple params is applied on reboot.
+- name: rebuild initramfs
+  shell: dracut -f
   become: yes

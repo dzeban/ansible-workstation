@@ -7,7 +7,9 @@
     content: "options hid_apple fnmode=2 swap_opt_cmd=1\n"
     dest: /etc/modprobe.d/hid_apple.conf
   become: yes
-  notify: reload hid_apple
+  notify:
+    - reload hid_apple
+    - rebuild initramfs
   when: "{{ 'macbook' in (ansible_product_name | lower) }}"
 
 - name: Change foreground for keyboard indicator
