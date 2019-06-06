@@ -30,6 +30,7 @@ packages_system:
   - fzf
   - fd-find
   - levien-inconsolata-fonts
+  - "https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_linux_amd64.rpm"
 
 packages_pip:
   - http-prompt
