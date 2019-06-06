@@ -5,6 +5,7 @@
     url: "{{ neovim_appimage_url }}"
     dest: "{{ neovim_appimage_path }}"
     mode: 0755
+    force: yes
 
 - name: Symlink nvim appimage
   file:
