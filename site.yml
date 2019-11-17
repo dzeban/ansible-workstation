@@ -37,6 +37,9 @@
     - import_role: name=gcloud
       tags: gcloud
 
+    - import_role: name=terraform
+      tags: terraform
+
     - name: Disable SELinux
       become: yes
       lineinfile:
