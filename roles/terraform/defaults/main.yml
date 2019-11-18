@@ -4,3 +4,5 @@ terraform_download_url: https://releases.hashicorp.com/terraform/{{ terraform_ve
 
 terraform_install_dir: /usr/local/bin
 terraform_download_dir: /tmp
+
+terraform_install_force: false

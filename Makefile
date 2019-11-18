@@ -1,8 +1,8 @@
-all:
-	ansible-playbook -K site.yml
+default:
+	@echo 'Choose "work" or "home" target'
 
-diff:
-	ansible-playbook -D -K site.yml
+home:
+	ansible-playbook -i inventory/home -K site.yml
 
-checkdiff:
-	ansible-playbook -CD -K site.yml
+work:
+	ansible-playbook -i inventory/work -K site.yml

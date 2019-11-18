@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   tasks:
     - import_role: name=rpmfusion
       tags: packages
@@ -50,5 +50,3 @@
         regexp: '^SELINUX='
         line: 'SELINUX=disabled'
       tags: system
-
-      # terraform
