@@ -7,5 +7,3 @@ keyboard_delay: 200
 
 terraform_install_dir: "{{ ansible_user_dir }}/bin"
 terraform_download_dir: "{{ ansible_user_dir }}/soft"
-
-terraform_install_force: false
