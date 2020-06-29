@@ -1,7 +1,7 @@
 ---
 neovim_dest_dir: "{{ ansible_user_dir }}/soft"
 neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
-golang_version: "1.13"
+golang_version: "1.14"
 keyboard_repeat_rate: 60
 keyboard_delay: 200
 
