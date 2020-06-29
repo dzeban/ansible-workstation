@@ -5,6 +5,6 @@ golang_version: "1.14"
 keyboard_repeat_rate: 60
 keyboard_delay: 200
 
-terraform_version: "0.12.16"
+terraform_version: "0.12.24"
 terraform_install_dir: "{{ ansible_user_dir }}/bin"
 terraform_download_dir: "{{ ansible_user_dir }}/soft"
