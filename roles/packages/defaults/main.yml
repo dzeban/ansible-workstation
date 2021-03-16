@@ -34,4 +34,4 @@ packages_system:
 
 packages_pip:
   - http-prompt
-  - ansible
+  - ansible==2.9.13
