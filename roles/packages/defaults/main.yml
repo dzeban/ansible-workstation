@@ -35,3 +35,4 @@ packages_system:
 packages_pip:
   - http-prompt
   - ansible==2.9.13
+  - ansible-lint
