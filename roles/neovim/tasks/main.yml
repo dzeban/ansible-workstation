@@ -18,10 +18,6 @@
   pip:
     name: [pynvim, neovim]
     state: latest
-    executable: "{{ item }}"
-  loop:
-    - pip2
-    - pip3
   become: yes
 
 - name: Ensure config dir
