@@ -20,17 +20,18 @@ packages_system:
   - ctags
   - cscope
   - mc
-  - scrot
+  - maim # scrot replacement
   - geeqie
   - the_silver_searcher
   - vlc
-  - hugo
   - pinta
   - jq
   - fzf
   - fd-find
-  - levien-inconsolata-fonts
-  - "https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_linux_amd64.rpm"
+  - bat
+  - exa
+  - alacritty
+  - git-delta
 
 packages_pip:
   - http-prompt

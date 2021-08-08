@@ -1,7 +1,7 @@
 ---
 neovim_dest_dir: "{{ ansible_user_dir }}/soft"
 neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
-golang_version: "1.13"
+golang_version: "1.16"
 
 terraform_install_dir: "{{ ansible_user_dir }}/bin"
 terraform_download_dir: "{{ ansible_user_dir }}/soft"
