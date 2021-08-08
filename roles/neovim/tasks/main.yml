@@ -6,6 +6,7 @@
     dest: "{{ neovim_appimage_path }}"
     mode: 0755
     force: yes
+    timeout: 180
 
 - name: Symlink nvim appimage
   file:
@@ -13,6 +14,7 @@
     src: "{{ neovim_appimage_path }}"
     dest: "{{ neovim_bin }}"
     mode: 0755
+  become: yes
 
 - name: Ensure python modules
   pip:
