@@ -1,0 +1,8 @@
+---
+- name: Configure touchpad
+  command: dconf write {{ item }}
+  loop:
+    - /org/mate/desktop/peripherals/touchpad/horizontal-two-finger-scrolling true
+    - /org/mate/desktop/peripherals/touchpad/tap-to-click true
+    - /org/mate/desktop/peripherals/touchpad/two-finger-click 3
+    - /org/mate/desktop/peripherals/touchpad/three-finger-click 2

@@ -1,0 +1,8 @@
+---
+- name: Set display settings
+  command: dconf write {{ item }}
+  loop:
+    - /org/mate/notification-daemon/theme "'{{ desktop_notification_theme }}'"
+    - /org/mate/power-manager/backlight-battery-reduce false
+    - /org/mate/power-manager/idle-dim-battery false
+    - /org/gnome/system/location/enabled true # for redshift

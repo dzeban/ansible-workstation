@@ -1,0 +1,15 @@
+---
+desktop_keyboard_options: "['grp\tgrp:alt_shift_toggle','caps\tcaps:ctrl_modifier']"
+desktop_keyboard_indicator_foreground_color: "100 100 100"
+desktop_keyboard_repeat_rate: 60
+desktop_keyboard_delay: 200
+
+desktop_fonts_copr: dawid/better_fonts
+desktop_fonts_packages: 
+  - fontconfig-enhanced-defaults 
+  - fontconfig-font-replacements
+desktop_fonts:
+  main: Roboto 11
+  mono: Roboto Mono 11
+desktop_notification_theme: coco
+desktop_terminal_font: "Inconsolata 14"

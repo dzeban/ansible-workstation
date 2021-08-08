@@ -7,23 +7,14 @@
     - import_role: name=packages
       tags: packages
 
-    - import_role: name=fonts
-      tags: fonts
-
-    - import_role: name=keyboard
-      tags: keyboard
-
-    - import_role: name=terminal
-      tags: terminal
+    - import_role: name=desktop
+      tags: desktop
 
     - import_role: name=dropbox
       tags: dropbox
 
     - import_role: name=golang
       tags: golang
-
-    - import_role: name=i3-mate
-      tags: i3
 
     - import_role: name=neovim
       tags: vim

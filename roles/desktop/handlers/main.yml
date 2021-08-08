@@ -6,7 +6,6 @@
   shell: rmmod hid_apple; modprobe hid_apple
   become: yes
 
-
 # Rebuild initramfs so hid_apple params is applied on reboot.
 - name: rebuild initramfs
   shell: dracut -f
