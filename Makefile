@@ -6,3 +6,7 @@ home:
 
 work:
 	ansible-playbook -i inventory/work -K site.yml
+
+reqs: 
+	python3 -m pip install --user --upgrade pipx
+	pipx install --include-deps ansible
