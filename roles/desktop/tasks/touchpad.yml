@@ -6,3 +6,4 @@
     - /org/mate/desktop/peripherals/touchpad/tap-to-click true
     - /org/mate/desktop/peripherals/touchpad/two-finger-click 3
     - /org/mate/desktop/peripherals/touchpad/three-finger-click 2
+    - /org/mate/desktop/peripherals/touchpad/disable-while-typing true
