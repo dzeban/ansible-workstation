@@ -10,3 +10,5 @@ work:
 reqs: 
 	python3 -m pip install --user --upgrade pipx
 	pipx install --include-deps ansible
+
+.PHONY: reqs work home
