@@ -32,7 +32,12 @@ packages_system:
   - exa
   - alacritty
   - git-delta
+  - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
 
-packages_pip:
+packages_gpg_keys:
+  - "https://dl.google.com/linux/linux_signing_key.pub"
+
+packages_python:
   - http-prompt
   - ansible-lint
+  - visidata

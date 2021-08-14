@@ -1,4 +1,10 @@
 ---
+- name: Import GPG keys
+  rpm_key:
+    key: "{{ item }}"
+  loop: "{{ packages_gpg_keys }}"
+  become: yes
+
 - name: Install packages
   dnf:
     name: "{{ packages_system }}"
