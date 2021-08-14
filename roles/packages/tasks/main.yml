@@ -11,8 +11,6 @@
     state: latest
   become: yes
 
-- name: Install pip packages
-  pip:
-    name: "{{ packages_pip }}"
-    state: latest
-    extra_args: --user
+- name: Install python packages
+  command: pipx upgrade {{ item }}
+  loop: "{{ packages_python }}"
