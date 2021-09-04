@@ -6,3 +6,10 @@
     - /org/mate/power-manager/backlight-battery-reduce false
     - /org/mate/power-manager/idle-dim-battery false
     - /org/gnome/system/location/enabled true # for redshift
+
+- name: Set default background
+  file:
+    state: link
+    dest: /usr/share/backgrounds/default.png
+    src: "{{ desktop_background_filename }}"
+  become: yes

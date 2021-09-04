@@ -13,3 +13,5 @@ desktop_fonts:
   mono: Roboto Mono 11
 desktop_notification_theme: coco
 desktop_terminal_font: "Inconsolata 14"
+
+desktop_background_filename: "/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Dark-no-logo.png"
