@@ -41,3 +41,6 @@ packages_python:
   - http-prompt
   - ansible-lint
   - visidata
+packages_bin_url: https://github.com/alexdzyoba/bin/releases/download/v0.1.0/bin_0.1.0_linux_amd64
+packages_bin_path: "{{ ansible_user_dir }}/bin"
+packages_bin_binaries: []

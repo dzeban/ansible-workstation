@@ -1,5 +1,4 @@
 ---
-
 - name: Download Neovim appimage
   get_url:
     url: "{{ neovim_appimage_url }}"

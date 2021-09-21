@@ -14,3 +14,6 @@
 - name: Install python packages
   command: pipx upgrade {{ item }}
   loop: "{{ packages_python }}"
+
+- import_tasks: bin.yml
+  when: packages_bin_binaries

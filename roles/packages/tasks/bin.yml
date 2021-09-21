@@ -1,0 +1,11 @@
+---
+- name: Install bin
+  get_url:
+    url: "{{ packages_bin_url }}"
+    dest: "{{ packages_bin_path }}/bin"
+    mode: 0755
+  become: yes
+
+- name: Install binaries
+  command: bin install {{ item }}
+  loop: "{{ packages_bin_binaries }}"
