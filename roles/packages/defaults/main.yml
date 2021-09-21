@@ -1,46 +1,8 @@
 ---
-packages_system:
-  - sysstat
-  - tmux
-  - google-roboto-mono-fonts
-  - git
-  - tig
-  - make
-  - gcc
-  - clang
-  - patch
-  - meld
-  - redshift
-  - redshift-gtk
-  - mutt
-  - perl-Digest-SHA # shasum
-  - clipit
-  - xclip # for Vim clipboard
-  - NetworkManager-openvpn
-  - ctags
-  - cscope
-  - mc
-  - maim # scrot replacement
-  - geeqie
-  - the_silver_searcher
-  - vlc
-  - pinta
-  - jq
-  - fzf
-  - fd-find
-  - bat
-  - exa
-  - alacritty
-  - git-delta
-  - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+packages_system: []
+packages_gpg_keys: []
+packages_python: []
 
-packages_gpg_keys:
-  - "https://dl.google.com/linux/linux_signing_key.pub"
-
-packages_python:
-  - http-prompt
-  - ansible-lint
-  - visidata
 packages_bin_url: https://github.com/alexdzyoba/bin/releases/download/v0.1.0/bin_0.1.0_linux_amd64
 packages_bin_path: "{{ ansible_user_dir }}/bin"
 packages_bin_binaries: []

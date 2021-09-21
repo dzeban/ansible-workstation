@@ -1,0 +1,58 @@
+---
+packages_system:
+  - sysstat
+  - tmux
+  - google-roboto-mono-fonts
+  - git
+  - tig
+  - make
+  - gcc
+  - clang
+  - patch
+  - meld
+  - redshift
+  - redshift-gtk
+  - mutt
+  - perl-Digest-SHA # shasum
+  - clipit
+  - xclip # for Vim clipboard
+  - xkill
+  - NetworkManager-openvpn
+  - ctags
+  - cscope
+  - mc
+  - maim # scrot replacement
+  - geeqie
+  - ripgrep
+  - vlc
+  - pinta
+  - jq
+  - fzf
+  - alacritty
+  - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+
+packages_gpg_keys:
+  - "https://dl.google.com/linux/linux_signing_key.pub"
+
+packages_python:
+  - http-prompt
+  - ansible-lint
+  - visidata
+
+packages_bin_binaries:
+  - https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+  - https://github.com/dandavison/delta/releases/download/0.8.3/delta-0.8.3-x86_64-unknown-linux-gnu.tar.gz
+  - https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
+  - https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
+  - https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-gnu.tar.gz
+  - https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip 
+  - https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
+  - https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
+  - https://github.com/Canop/broot/releases/download/v1.6.3/broot_1.6.3.zip
+  - https://github.com/fullstorydev/grpcurl/releases/download/v1.8.2/grpcurl_1.8.2_linux_x86_64.tar.gz
+  - https://github.com/golangci/golangci-lint/releases/download/v1.42.1/golangci-lint-1.42.1-linux-amd64.tar.gz
+  - https://github.com/stern/stern/releases/download/v1.20.1/stern_1.20.1_linux_amd64.tar.gz
+  - https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_Linux_x86_64.tar.gz
+  - https://github.com/casey/just/releases/download/0.10.1/just-0.10.1-x86_64-unknown-linux-musl.tar.gz
+  - https://dl.k8s.io/release/v1.22.2/bin/linux/amd64/kubectl
+  - https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
