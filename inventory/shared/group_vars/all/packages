@@ -5,6 +5,7 @@ packages_system:
   - google-roboto-mono-fonts
   - git
   - tig
+  - gitk
   - make
   - gcc
   - clang
@@ -31,6 +32,7 @@ packages_system:
   - alacritty
   - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
   - wireguard-tools
+  - entr
 
 packages_gpg_keys:
   - "https://dl.google.com/linux/linux_signing_key.pub"
