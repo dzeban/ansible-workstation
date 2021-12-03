@@ -31,6 +31,9 @@
     - import_role: name=gcloud
       tags: gcloud
 
+    - import_role: name=clickhouse-client
+      tags: clickhouse
+
     - name: Disable SELinux
       become: yes
       lineinfile:

@@ -1,0 +1,16 @@
+---
+- name: Setup repo
+  yum_repository:
+    name: clickhouse
+    description: Clickhouse repo
+    baseurl: "{{ clickhouse_client_repo_url }}"
+    gpgcheck: yes
+    gpgkey: "{{ clickhouse_client_repo_key }}"
+  become: yes
+
+- name: Install clickhouse-client
+  dnf:
+    name: clickhouse-client
+    state: latest
+    update_cache: yes
+  become: yes

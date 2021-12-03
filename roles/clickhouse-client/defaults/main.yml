@@ -1,0 +1,3 @@
+---
+clickhouse_client_repo_url: "https://repo.clickhouse.com/rpm/stable/x86_64"
+clickhouse_client_repo_key: "https://repo.clickhouse.com/CLICKHOUSE-KEY.GPG"
