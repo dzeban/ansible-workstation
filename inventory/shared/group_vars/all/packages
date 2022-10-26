@@ -8,6 +8,7 @@ packages_system:
   - polybar
   - rofi
   - google-roboto-mono-fonts
+  - system-config-printer
   - sysstat
   - strace
   - tmux
