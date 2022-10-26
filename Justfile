@@ -11,6 +11,6 @@ work tags='all':
     just _run work {{tags}}
 
 reqs:
-    python3 -m pip install --user --upgrade pipx
-    pipx install --include-deps ansible
+    python3 -m ensurepip --upgrade
+    python3 -m pip install --user --upgrade ansible
 
