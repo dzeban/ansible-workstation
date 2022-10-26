@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - import_role: name=rpmfusion
-      tags: packages
+      tags: rpmfusion
 
     - import_role: name=packages
       tags: packages
@@ -10,29 +10,29 @@
     - import_role: name=desktop
       tags: desktop
 
+    - import_role: name=dotfiles
+      tags: dotfiles
+
+    - import_role: name=neovim
+      tags: vim
+
     - import_role: name=dropbox
       tags: dropbox
 
     - import_role: name=golang
       tags: golang
 
-    - import_role: name=neovim
-      tags: vim
-
     - import_role: name=vscode
       tags: vscode
-
-    - import_role: name=dotfiles
-      tags: dotfiles
 
     - import_role: name=docker
       tags: docker
 
-    - import_role: name=gcloud
-      tags: gcloud
+  # - import_role: name=gcloud
+  #   tags: gcloud
 
-    - import_role: name=clickhouse-client
-      tags: clickhouse
+  # - import_role: name=clickhouse-client
+  #   tags: clickhouse
 
     - name: Disable SELinux
       become: yes
