@@ -5,23 +5,29 @@
     warn: no # because dnf module doesn't support copr
   become: yes
 
+- name: Hack to make fontconfig-enhanced-defaults work
+  dnf:
+    name: "https://download.copr.fedorainfracloud.org/results/dawid/better_fonts/fedora-34-x86_64/02077386-archivo-black-fonts/archivo-black-fonts-1.001-1.fc34.noarch.rpm"
+    disable_gpg_check: yes
+  become: yes
+
 - name: Install better fonts packages
   dnf:
     name: "{{ desktop_fonts_packages }}"
     state: latest
   become: yes
 
-- name: Configure aliasing
-  command: dconf write {{ item }}
-  loop:
-    - /org/mate/desktop/font-rendering/antialiasing "'rgba'"
-    - /org/mate/desktop/font-rendering/hinting "'full'"
-   
-- name: Set fonts
-  command: dconf write {{ item }}
-  loop:
-    - /org/mate/desktop/interface/font-name "'{{ desktop_fonts.main }}'"
-    - /org/mate/desktop/interface/monospace-font-name "'{{ desktop_fonts.mono }}'"
-    - /org/mate/desktop/interface/document-font-name "'{{ desktop_fonts.main }}'"
-    - /org/mate/caja/desktop/font "'{{ desktop_fonts.main }}'"
-
+#- name: Configure aliasing
+#  command: dconf write {{ item }}
+#  loop:
+#    - /org/mate/desktop/font-rendering/antialiasing "'rgba'"
+#    - /org/mate/desktop/font-rendering/hinting "'full'"
+#   
+#- name: Set fonts
+#  command: dconf write {{ item }}
+#  loop:
+#    - /org/mate/desktop/interface/font-name "'{{ desktop_fonts.main }}'"
+#    - /org/mate/desktop/interface/monospace-font-name "'{{ desktop_fonts.mono }}'"
+#    - /org/mate/desktop/interface/document-font-name "'{{ desktop_fonts.main }}'"
+#    - /org/mate/caja/desktop/font "'{{ desktop_fonts.main }}'"
+#

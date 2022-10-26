@@ -1,0 +1,9 @@
+---
+- name: Render lightdm config
+  template:
+    src: lightdm.conf
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes

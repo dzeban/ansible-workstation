@@ -1,0 +1,5 @@
+[Unit]
+Description=syndaemon
+
+[Service]
+ExecStart=/usr/bin/syndaemon -R -K -i 1

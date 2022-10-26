@@ -1,9 +1,29 @@
 ---
 - name: Configure touchpad
-  command: dconf write {{ item }}
-  loop:
-    - /org/mate/desktop/peripherals/touchpad/horizontal-two-finger-scrolling true
-    - /org/mate/desktop/peripherals/touchpad/tap-to-click true
-    - /org/mate/desktop/peripherals/touchpad/two-finger-click 3
-    - /org/mate/desktop/peripherals/touchpad/three-finger-click 2
-    - /org/mate/desktop/peripherals/touchpad/disable-while-typing true
+  template:
+    src: templates/touchpad.xorg.conf
+    dest: /etc/X11/xorg.conf.d/50-touchpad.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: Ensure systemd user services dir
+  file:
+    path: "{{ ansible_user_dir }}/.config/systemd/user"
+    state: directory
+    mode: 0755
+
+- name: Render syndaemon service to disable touchpad while typing
+  template:
+    src: templates/syndaemon.service
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/syndaemon.service"
+    mode: 0644
+
+- name: Ensure syndaemon service
+  systemd:
+    scope: user
+    name: syndaemon
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
