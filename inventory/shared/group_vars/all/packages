@@ -1,8 +1,16 @@
 ---
 packages_system:
-  - sysstat
-  - tmux
+  - xorg-x11-drv-synaptics-legacy
+  - xset
+  - xsetroot
+  - xsecurelock
+  - xautolock
+  - polybar
+  - rofi
   - google-roboto-mono-fonts
+  - sysstat
+  - strace
+  - tmux
   - git
   - tig
   - gitk
@@ -10,6 +18,7 @@ packages_system:
   - gcc
   - clang
   - patch
+  - luajit
   - meld
   - redshift
   - redshift-gtk
@@ -20,9 +29,9 @@ packages_system:
   - xkill
   - NetworkManager-openvpn
   - ctags
-  - cscope
   - mc
-  - maim # scrot replacement
+  - scrot
+  - maim # scrot replacement (TODO: Why? Because of Debian?)
   - geeqie
   - ripgrep
   - vlc
@@ -33,6 +42,7 @@ packages_system:
   - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
   - wireguard-tools
   - entr
+  - telnet
 
 packages_gpg_keys:
   - "https://dl.google.com/linux/linux_signing_key.pub"
@@ -43,7 +53,8 @@ packages_python:
   - visidata
 
 packages_bin_binaries:
-  - https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+  - https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip
+  - https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_amd64.zip
   - https://github.com/dandavison/delta/releases/download/0.8.3/delta-0.8.3-x86_64-unknown-linux-gnu.tar.gz
   - https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
   - https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
@@ -56,6 +67,5 @@ packages_bin_binaries:
   - https://github.com/golangci/golangci-lint/releases/download/v1.42.1/golangci-lint-1.42.1-linux-amd64.tar.gz
   - https://github.com/stern/stern/releases/download/v1.20.1/stern_1.20.1_linux_amd64.tar.gz
   - https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_Linux_x86_64.tar.gz
-  - https://github.com/casey/just/releases/download/0.10.1/just-0.10.1-x86_64-unknown-linux-musl.tar.gz
   - https://dl.k8s.io/release/v1.22.2/bin/linux/amd64/kubectl
   - https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
