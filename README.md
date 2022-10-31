@@ -1,12 +1,13 @@
 # ansible-workstation
+
 Bootstrap my workstation with Ansible
 
-## Prerequisites
+## Quickstart
 
-* Put SSH keys to .ssh folder to allow dotfiles repo clone
-* make reqs
-* make home
+* Install [just](https://github.com/casey/just)
+* `just reqs`
+* `just home`
 
 ## TODO
 
-- [ ] Try to use "just" to pass `--tags` arg.
+- [x] Try to use "just" to pass `--tags` arg.
