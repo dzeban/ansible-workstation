@@ -1,0 +1,16 @@
+# Inspired by https://github.com/github/gitignore
+
+*.sw[po]
+Session.vim
+.undodir
+
+*.code-workspace
+.tags
+tags
+cscope.out
+
+*.[oa]
+*.ko
+
+__pycache__
+*.pyc

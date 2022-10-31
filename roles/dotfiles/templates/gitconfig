@@ -1,0 +1,57 @@
+[init]
+    defaultBranch = master
+
+[user]
+{% if dotfiles_git_user is defined %}
+    name = {{ dotfiles_git_user.name }}
+    email = {{ dotfiles_git_user.email }}
+{% else %}
+    name = Alex Dzyoba
+    email = alex@dzyoba.com
+{% endif %}
+
+[core]
+    excludesfile = ~/.gitignore
+    editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[push]
+    default = simple
+
+[color]
+    ui = true
+
+[alias]
+    c = checkout
+    n = checkout -b
+    p = push -u origin HEAD
+    pf = push -f
+    r = restore
+    s = status
+    l = log --no-merges --abbrev-commit --decorate
+    lg = log --graph --abbrev-commit --decorate
+    ds = diff --staged
+    d = diff
+    b = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 20 | awk -F' ~ HEAD@{' '{printf(\"\\033[33m%s:\\033[0m %s\\n\", substr($2, 1, length($2)-1), $1)}'
+    fixup = commit --amend --no-edit
+
+[commit]
+    verbose = true
+
+[gpg]
+    program = gpg2
+
+[delta]
+    features = line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
+[pull]
+    rebase = false

@@ -1,0 +1,16 @@
+order += "battery 0"
+order += "time"
+
+time {
+    format = "%d.%m.%y ● %H:%M"
+}
+
+battery 0 {
+   format = "%status %percentage"
+   integer_battery_capacity = true
+   format_down = "No battery"
+   status_chr = "⚡"
+   status_bat = "🔋"
+   status_full = "FULL"
+   low_threshold = 10
+}

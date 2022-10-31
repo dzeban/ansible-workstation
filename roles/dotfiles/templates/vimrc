@@ -1,0 +1,324 @@
+" neovim is always nocompatible but for Vim set nocompatible
+if !has('nvim')
+    set nocompatible
+endif
+
+" Put .swp files into single dir to avoid files pollution
+set directory=~/.vim/swapfiles//
+
+autocmd! BufWritePost ~/.vimrc source $MYVIMRC
+autocmd! BufWritePost .vimrc source $MYVIMRC " Editing in dotfiles repo
+
+autocmd BufRead,BufNewFile *.conf setfiletype config
+autocmd BufRead,BufNewFile *.pp setfiletype ruby
+autocmd BufRead,BufNewFile alert.rules setfiletype yaml "prometheus alert rules are yaml
+autocmd BufRead,BufNewFile *.sls setfiletype yaml "salt files are yaml
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
+
+" Install plugins with vim-plug
+call plug#begin('~/.vim/plugged')
+    Plug 'tpope/vim-sensible'
+    Plug 'scrooloose/nerdtree'
+    Plug 'mhinz/vim-startify'
+    Plug 'troydm/zoomwintab.vim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'qpkorr/vim-bufkill'
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'alexdzyoba/vim-tile'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'majutsushi/tagbar'
+    Plug 'jreybert/vimagit'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'troydm/easybuffer.vim'
+    Plug 'neomake/neomake'
+    Plug 'pearofducks/ansible-vim'
+    Plug 'hashivim/vim-terraform'
+    Plug 'thaerkh/vim-workspace'
+    Plug 'rhysd/git-messenger.vim'
+    Plug 'ajh17/VimCompletesMe'
+    Plug 'godlygeek/tabular'
+call plug#end()
+
+" Hide buffer instead of unloading it.
+" This fixes nagging 'No write since last change' when switching buffers
+set hidden
+
+" Configure persistent undo
+" Vim will save undo in file stored in .vim/undodir
+set undodir=~/.vim/undodir
+set undofile
+
+" Enable mouse support in all modes
+set mouse=a
+
+" I don't need to see the current mode,
+" I know what it is
+set noshowmode
+
+" Complete command line on longest substring, 
+" then list alternatives
+set wildmode=list:full
+
+set completeopt=menuone,preview,longest
+
+" Always show sign for gitgutter
+set signcolumn=yes
+" Always use the clipboard for all operations
+set clipboard=unnamedplus
+
+" Search continues over end of file
+set wrapscan
+
+" Show line numbers
+set number
+
+" Don't show spaces.
+" Trailing whitespace is handled by sensible plugin.
+set nolist
+
+" Indentation settings
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"new splits will be at the bottom or to the right side of the screen
+set splitbelow
+set splitright
+
+" Default text width is 80
+set textwidth=80
+
+" Show matching bracket
+set showmatch
+
+set ignorecase " searches are case insensitive...
+set smartcase  " ... unless they contain at least one capital letter
+
+" Highlight column after textwidth
+" set colorcolumn=+1
+" highlight ColorColumn ctermbg=darkgrey
+
+" Store git branch name in a variable to show it in statusline.
+" The variable is updated only on open and write events to prevent remnant
+" characters on scroll. The remnants happen because statusline is updating on
+" each move (to show cursor position) and invoking system on each statusline
+" update is slow and so Vim is not catching up and leave characters in text.
+function! GitBranch()
+  let b:gitbranch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+autocmd BufEnter,BufWritePost * call GitBranch()
+
+let mapleader=" "
+
+" Correct next line jump within wrapped lines
+nmap j gj
+nmap k gk
+
+" Don't interrupt v-mode due indent. Thanks, kaero
+vnoremap < <gv
+vnoremap > >gv
+
+" Center view on search result
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+" Map BOL/EOL to 9/0 respectively
+nmap 0 $
+nmap 9 ^
+
+"save file with sudo
+cnoremap w!! %!sudo tee > /dev/null %
+
+" C-c and C-v - Copy/Paste to global clipboard
+vnoremap <C-c> "+y
+inoremap <C-v> <ESC>"+pa
+
+" Windows resizing
+map <C-W>= <C-W>3+
+map <C-W>- <C-W>3-
+map <C-W>. <C-W>5>
+map <C-W>, <C-W>5<
+
+" Make :cnext, :cprev, :lnext, :lprev cycle 
+" to avoid stupid 'No more items' error
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+command! Lnext try | lnext | catch | lfirst | catch | endtry
+command! Lprev try | lprev | catch | llast | catch | endtry
+
+" Quick tab actions
+" Don't override <tab> because in Vim it's the same as <c-i> which is jump
+" forward (opposite to <c-o>). So remapping <tab> breaks jump forward.
+nnoremap <S-tab> :tabnext<CR>
+
+"replace the word under cursor
+nnoremap <leader>* :%s/\<<c-r><c-w>\>//<left>
+
+" Use ag for :grep
+set grepprg=ag\ --nogroup\ --nocolor
+
+" Install vim-plug if we don't already have it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+nnoremap <F3> :setlocal spell! spelllang=en_us<CR>
+
+" Plugin configuration
+
+" Startify order
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'dir',       'header': ['   Recent files in '. getcwd()] },
+      \ { 'type': 'files',     'header': ['   Recent fils']            },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+
+" Zoom Vim pane with a binding similar to tmux
+nnoremap <c-w>z :ZoomWinTabToggle<CR>
+
+" fzf.vim mappings
+nnoremap <leader>; :Buffers<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>T :Tags<CR>
+nnoremap <leader>t :BTags<CR>
+nnoremap <leader>s :Ag<CR>
+nnoremap <leader>h :GitMessenger<CR>
+nnoremap <leader>/ :History/<CR>
+nnoremap <leader>: :History:<CR>
+nnoremap <leader>gc :Commits<CR>
+nnoremap <leader>gbc :BCommits<CR>
+nnoremap <leader>gs :GFiles?<CR>
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" gutentags
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_modules = ['ctags']
+let g:gutentags_file_list_command = 'ag -l'
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_exclude_filetypes = ['vim', 'markdown', 'text', 'config', 'yaml', 'html', 'gitcommit']
+
+" Colorscheme is installed as a plugin and so it's available only after plug#end
+set termguicolors
+colorscheme tile
+"
+" F9, F10 for location list navigation
+nnoremap <F7> :Lprev<CR>
+nnoremap <F8> :Lnext<CR>
+
+" F9, F10 for quickfix list navigation
+nnoremap <F9> :Cprev<CR>
+nnoremap <F10> :Cnext<CR>
+
+" F11 - Show tagbar list
+let g:tagbar_left=1
+nmap <F11> :TagbarToggle<CR>
+imap <F11> <esc>:TagbarToggle<CR>
+vmap <F11> <esc>:TagbarToggle<CR>
+
+"" F12 - Files
+nnoremap <F12> :NERDTreeToggle<cr>
+vnoremap <F12> <esc>:NERDTreeToggle<cr>i
+inoremap <F12> <esc>:NERDTreeToggle<cr>i
+let g:NERDTreeWinPos="right"
+
+" vimagit tuning
+" Set textwidth for commit message in vimagit
+autocmd User VimagitEnterCommit setlocal textwidth=72
+autocmd User VimagitLeaveCommit setlocal textwidth=0
+
+" Show all diffs in vimagit window
+let g:magit_default_fold_level=2
+
+" F5 - easy buffer
+nmap <F5> <Esc>:EasyBuffer<cr>
+
+" Invoke neomake for linting only on buffer write
+call neomake#configure#automake('w')
+
+function! NeomakeStatusLine() abort
+  return neomake#statusline#get(bufnr('%'), {
+    \ 'format_loclist_ok': '✔',
+    \ 'format_loclist_unknown': '',
+    \ 'use_highlights_with_defaults': 0,
+    \ })
+endfunction
+nnoremap <leader>m :Neomake!<cr>
+
+" Workspace settings
+" Save triggers neomake, I don't want to constantly run it.
+let g:workspace_autosave = 0
+let g:workspace_session_disable_on_args = 1
+" Because sessions are long-lived buffers are piled.
+" This command and shortcut is very handy!
+nnoremap <leader>q :CloseHiddenBuffers<CR>
+
+" Statusline format
+set statusline=
+set statusline+=%#title#\ %{b:gitbranch}\  " branch name
+set statusline+=%#normal#\ %f\  " filename
+set statusline+=%#type#\ %Y\ "filetype
+set statusline+=%#structure#%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%{gutentags#statusline()}
+set statusline+=%#warningmsg#\ %{NeomakeStatusLine()}
+set statusline+=%#normal#%=      "left/right separator
+set statusline+=%P\     "percent through file
+set statusline+=[%l:%c]     "cursor column
+
+" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
+augroup go
+    autocmd!
+    autocmd FileType go nnoremap <leader>r :GoReferrers<CR>
+    autocmd FileType go nnoremap <leader>i :GoImplements<CR>
+    autocmd FileType go nnoremap <leader>d :GoDoc<CR>
+    autocmd FileType go nnoremap <leader>D :GoDocBrowser<CR>
+    autocmd FileType go nnoremap <leader>c :GoCoverageToggle<CR>
+    autocmd FileType go nnoremap <leader>e :GoIfErr<CR>
+    autocmd FileType go let g:go_fmt_command = "goimports"
+    autocmd FileType go let g:go_rename_command = "gopls"
+    autocmd FileType go let g:go_def_mode = "gopls"
+    autocmd FileType go let g:go_info_mode = "gopls"
+    autocmd FileType go let g:go_metalinter_command = "golanci-lint"
+    autocmd FileType go let g:go_gopls_complete_unimported = 1
+    autocmd FileType go let g:go_auto_type_info = 1
+    autocmd FileType go let g:go_doc_popup_window = 1
+    autocmd FileType go let g:go_echo_command_info = 0
+augroup END
+
+let g:terraform_fmt_on_save=1 " This doesn't work in autocmd
+
+" Surround shortcut to correctly wrap word 
+nmap ysw ysiW
+
+" GitGutter config
+let g:gitgutter_diff_args = '-w' " ignore whitespace
+let g:updatetime=500
+
+" Prefix chaoren/vim-wordmotion motions with leader so it doesn't conflict with
+" Vim defaults
+" let g:wordmotion_prefix = '<Leader>'
+
+" Show preview of substitute command as I type
+if has('nvim')
+    set inccommand=nosplit
+endif
+
+let g:git_messenger_include_diff = 'current'

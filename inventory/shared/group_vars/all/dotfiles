@@ -1,0 +1,62 @@
+---
+dotfiles_config:
+  - src: i3/
+    dst: ~/.config/i3/
+    type: dir
+
+  - src: polybar.ini
+    dst: ~/.config/polybar/config.ini
+
+  - src: dunstrc
+    dst: ~/.config/dunst/dunstrc
+
+  - src: rofi.rasi
+    dst: ~/.config/rofi/config.rasi
+
+  - src: bash_aliases
+    dst: ~/.bash_aliases
+
+  - src: bashrc
+    dst: ~/.bashrc
+    type: template
+
+  - src: inputrc
+    dst: ~/.inputrc
+
+  - src: vimrc
+    dst: ~/.vimrc
+
+  - src: nvim/
+    dst: ~/.config/nvim/
+    type: dir
+
+  - src: gvimrc
+    dst: ~/.gvimrc
+
+  - src: tmux.conf
+    dst: ~/.tmux.conf
+
+  - src: gitconfig
+    dst: ~/.gitconfig
+    type: template
+
+  - src: gitignore
+    dst: ~/.gitignore
+
+  - src: clang-format
+    dst: ~/.clang-format
+
+  - src: pylintrc
+    dst: ~/.pylintrc
+
+  - src: ctags
+    dst: ~/.ctags
+
+  - src: clipitrc
+    dst: ~/.config/clipit/clipitrc
+
+  - src: redshift.conf
+    dst: ~/.config/redshift/redshift.conf
+
+  - src: ignore
+    dst: ~/.ignore

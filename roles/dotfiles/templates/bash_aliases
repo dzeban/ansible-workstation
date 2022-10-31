@@ -1,0 +1,77 @@
+# Alias vim to vimx - vim with clipboard support to be able to to Ctrl-c/Ctrl-v
+if [ -e /usr/bin/vimx ]
+then
+	alias vim='vimx'
+fi
+
+# command -v nvim 1>/dev/null
+# has_nvim=$?
+# if [[ $has_nvim -eq 0 ]]; then
+# 	alias vim=nvim
+# fi
+
+alias md5='md5sum'
+
+# modified commands
+#alias diff='colordiff'              # requires colordiff package
+alias more='less'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+#alias cal='cal -m'
+alias cal='ncal -b -M'
+
+# new commands
+alias du1='du --max-depth=1'
+alias openports='netstat --all --numeric --programs --inet'
+alias vi=vim
+
+# privileged access
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias halt='sudo halt'
+    alias mount='sudo mount'
+    alias umount='sudo umount'
+    alias netcfg='sudo netcfg2'
+    alias fdisk='sudo fdisk'
+    alias yum='sudo yum'
+    alias dnf='sudo dnf'
+fi
+
+# cd
+alias cd..='cd ..'
+alias ..='cd ..'
+
+# ls
+alias l='ls -hF --color=always --group-directories-first'
+alias ls='ls -hF --color=always --group-directories-first'
+alias ll='ls -l'
+alias la='ll -A'
+alias lx='ll -BX'                   # sort by extension
+alias lz='ll -rS'                   # sort by size
+alias lt='ll -rt'                   # sort by date
+alias lm='la | more'
+
+# safety features
+#alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+export GREP_COLOR="1;33"
+alias grep='grep --color=auto'
+
+alias ssh='ssh -o ConnectionAttempts=100'
+
+gocover () {   
+    local t=$(mktemp)
+    go test $COVERFLAGS -coverprofile=$t $@ ./... \
+    && go tool cover -func=$t \
+    && rm -f $t 
+}
+
+gocoverhtml () {   
+    local t=$(mktemp)
+    go test $COVERFLAGS -coverprofile=$t $@ ./... \
+    && go tool cover -html=$t \
+    && rm -f $t 
+}

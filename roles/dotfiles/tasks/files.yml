@@ -1,0 +1,11 @@
+---
+- name: Ensure {{ item.dst | dirname }} directory
+  file:
+    path: "{{ item.dst | dirname }}"
+    state: directory
+
+- name: Deploy {{ item.dst }}
+  copy:
+    src: "templates/{{ item.src }}"
+    dest: "{{ item.dst }}"
+    mode: "{{ item.mode | default('0644') }}"

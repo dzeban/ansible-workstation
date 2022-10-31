@@ -1,11 +1,15 @@
 ---
-- name: Clone dotfile git repo
-  git:
-    repo: git@github.com:dzeban/dotfiles.git
-    dest: "{{ ansible_user_dir }}/.dotfiles"
-    update: no
+- name: Deploy simple dotfiles
+  include_tasks: files.yml
+  loop: "{{ dotfiles_config }}"
+  when: item.type is undefined or item.type == "file"
 
-- name: Deploy dotfiles
-  shell: "yes | make"
-  args:
-    chdir: "{{ ansible_user_dir }}/.dotfiles"
+- name: Deploy templates
+  include_tasks: templates.yml
+  loop: "{{ dotfiles_config }}"
+  when: "(item.type | default('file'))== 'template'"
+
+- name: Deploy directories
+  include_tasks: dirs.yml
+  loop: "{{ dotfiles_config }}"
+  when: "(item.type | default('file'))== 'dir'"

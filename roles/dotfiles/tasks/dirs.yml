@@ -1,0 +1,11 @@
+---
+- name: Ensure {{ item.dst }} directory
+  file:
+    path: "{{ item.dst }}"
+    state: directory
+
+- name: Sync directory {{ item.src }}
+  synchronize:
+    src: "templates/{{ item.src }}"
+    dest: "{{ item.dst }}"
+    delete: yes

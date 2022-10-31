@@ -1,0 +1,4 @@
+[MASTER]
+disable=
+    C0112, C0114, C0115, C0116, # missing docstring
+    C0301, # line too long
