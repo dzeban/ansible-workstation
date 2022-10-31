@@ -3,3 +3,9 @@ Description=syndaemon
 
 [Service]
 ExecStart=/usr/bin/syndaemon -R -K -i 1
+Restart=always
+RestartSec="1s"
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=default.target
