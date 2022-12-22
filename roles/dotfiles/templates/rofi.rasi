@@ -1,5 +1,7 @@
 configuration {
 	modi: "window,run,ssh,windowcd,drun,combi,keys,filebrowser";
+    /* Keep in sync with .Xresources */
+	dpi: 200;
 /*	font: "mono 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -37,7 +39,6 @@ configuration {
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	filter: ;*/
-/*	dpi: -1;*/
 /*	threads: 0;*/
 /*	scroll-method: 0;*/
 /*	window-format: "{w}    {c}   {t}";*/

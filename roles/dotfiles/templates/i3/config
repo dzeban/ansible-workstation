@@ -1,7 +1,7 @@
 set $mod Mod4
 set $term i3-sensible-terminal
 
-exec_always --no-startup-id polybar
+exec_always --no-startup-id ~/.config/polybar/polybar.sh
 exec --no-startup-id dunst
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift-gtk -l manual

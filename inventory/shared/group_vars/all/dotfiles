@@ -7,6 +7,10 @@ dotfiles_config:
   - src: polybar.ini
     dst: ~/.config/polybar/config.ini
 
+  - src: polybar.sh
+    dst: ~/.config/polybar/polybar.sh
+    mode: "0755"
+
   - src: dunstrc
     dst: ~/.config/dunst/dunstrc
 
