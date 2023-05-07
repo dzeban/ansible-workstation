@@ -102,5 +102,6 @@ export GCP_AUTH_KIND=application
 [ -d ~/soft/ansible-completion ] && source ~/soft/ansible-completion/*.bash
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 [ -d .config/broot ] && source /home/avd/.config/broot/launcher/bash/br
