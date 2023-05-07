@@ -65,6 +65,14 @@ lspconfig.gopls.setup({
     },
 })
 
+vim.cmd([[
+augroup my-go-nvim-coverage
+    autocmd!
+    autocmd Syntax go hi goCoverageCovered guibg=green
+    autocmd Syntax go hi goCoverageUncover guibg=brown
+augroup end
+]])
+
 -- python-lsp-server for python
 lspconfig.pylsp.setup({
     capabilities = capabilities,
