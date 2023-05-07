@@ -74,3 +74,5 @@ gocoverhtml () {
     && go tool cover -html=$t \
     && rm -f $t 
 }
+
+alias c='xclip -selection clipboard'
