@@ -50,10 +50,9 @@ alias la='ll -A'
 alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
-alias lm='la | more'
+alias lm='la | less'
 
 # safety features
-#alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
