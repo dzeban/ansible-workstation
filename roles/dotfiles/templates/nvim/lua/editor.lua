@@ -205,6 +205,9 @@ require("gitsigns").setup {
     end
 }
 
+nmap("<A-]>", ":Gitsigns next_hunk<CR>")
+nmap("<A-[>", ":Gitsigns prev_hunk<CR>")
+
 -- F5 - close QuickFix list
 nmap("<F5>", ":cclose<cr>")
 
