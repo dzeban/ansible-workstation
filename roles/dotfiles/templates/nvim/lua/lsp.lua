@@ -1,7 +1,7 @@
 lsp_shared_setup = function(client, bufnr)
-    -- if client.resolved_capabilities.document_formatting then
-    --     vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting()")
-    -- end
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting()")
+    end
 
     -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -77,6 +77,33 @@ augroup end
 lspconfig.pylsp.setup({
     capabilities = capabilities,
     on_attach = lsp_shared_setup,
+})
+
+lspconfig.rust_analyzer.setup({
+    cmd = {"rustup", "run", "stable", "rust-analyzer"},
+    capabilities = capabilities,
+    on_attach = lsp_shared_setup,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+        }
+    }
 })
 
 -- sumneko_lua for Lua tailored for Neovim

@@ -372,3 +372,7 @@ require("go").setup({
 cmd("autocmd BufWritePre *.go :GoImport")
 
 g.git_messenger_include_diff = 'current'
+
+-- Rust
+-- Enable rust-analyzer for ALE
+cmd("let g:ale_linters = {'rust': ['analyzer']}")
