@@ -16,18 +16,3 @@
     name: "{{ desktop_fonts_packages }}"
     state: latest
   become: yes
-
-#- name: Configure aliasing
-#  command: dconf write {{ item }}
-#  loop:
-#    - /org/mate/desktop/font-rendering/antialiasing "'rgba'"
-#    - /org/mate/desktop/font-rendering/hinting "'full'"
-#   
-#- name: Set fonts
-#  command: dconf write {{ item }}
-#  loop:
-#    - /org/mate/desktop/interface/font-name "'{{ desktop_fonts.main }}'"
-#    - /org/mate/desktop/interface/monospace-font-name "'{{ desktop_fonts.mono }}'"
-#    - /org/mate/desktop/interface/document-font-name "'{{ desktop_fonts.main }}'"
-#    - /org/mate/caja/desktop/font "'{{ desktop_fonts.main }}'"
-#
