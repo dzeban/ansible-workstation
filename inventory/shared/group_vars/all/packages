@@ -1,52 +1,93 @@
 ---
 packages_system:
-  - xorg-x11-drv-synaptics-legacy
-  - xset
-  - xsetroot
-  - xsecurelock
-  - xautolock
-  - polybar
-  - rofi
-  - google-roboto-mono-fonts
-  - system-config-printer
-  - sysstat
-  - strace
-  - tmux
-  - git
-  - tig
-  - gitk
-  - make
-  - gcc
-  - clang
-  - patch
-  - luajit
-  - meld
-  - redshift
-  - redshift-gtk
-  - mutt
-  - perl-Digest-SHA # shasum
-  - clipit
-  - xclip # for Vim clipboard
-  - xkill
-  - NetworkManager-openvpn
-  - ctags
-  - mc
-  - scrot
-  - maim # scrot replacement (TODO: Why? Because of Debian?)
-  - geeqie
-  - ripgrep
-  - vlc
-  - pinta
-  - jq
-  - fzf
-  - alacritty
-  - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
-  - wireguard-tools
-  - entr
-  - telnet
+  Debian:
+    - xserver-xorg-input-synaptics  #
+    - x11-xserver-utils  # xset, xsetroot
+    - xsecurelock
+    - xautolock
+    - polybar
+    - rofi
+    - fonts-roboto  #
+    - system-config-printer
+    - sysstat
+    - strace
+    - tmux
+    - git
+    - tig
+    - gitk
+    - make
+    - gcc
+    - clang
+    - patch
+    - luajit
+    - meld
+    - redshift
+    - redshift-gtk
+    - mutt
+    - perl  # shasum
+    - clipit
+    - xclip  # for Vim clipboard
+    - x11-utils  # xkill
+    - network-manager-openvpn  #
+    - network-manager-openvpn-gnome  #
+    - universal-ctags  # ctags
+    - mc
+    - scrot
+    - maim  # scrot replacement (TODO: Why? Because of Debian?)
+    - geeqie
+    - ripgrep
+    - vlc
+    - jq
+    - fzf
+    - wireguard  #
+    - entr
+    - telnet
+  RedHat:
+    - xorg-x11-drv-synaptics-legacy
+    - xset
+    - xsetroot
+    - xsecurelock
+    - xautolock
+    - polybar
+    - rofi
+    - google-roboto-mono-fonts
+    - system-config-printer
+    - sysstat
+    - strace
+    - tmux
+    - git 
+    - tig
+    - gitk
+    - make
+    - gcc
+    - clang
+    - patch
+    - luajit
+    - meld
+    - redshift
+    - redshift-gtk
+    - mutt
+    - perl-Digest-SHA  # shasum
+    - clipit
+    - xclip  # for Vim clipboard
+    - xkill
+    - NetworkManager-openvpn
+    - ctags
+    - mc
+    - scrot
+    - maim  # scrot replacement (TODO: Why? Because of Debian?)
+    - geeqie
+    - ripgrep
+    - vlc
+    - jq
+    - fzf
+    - wireguard-tools
+    - entr
+    - telnet
 
-packages_gpg_keys:
-  - "https://dl.google.com/linux/linux_signing_key.pub"
+packages_flatpak:
+  - "com.google.Chrome"
+  - "com.github.PintaProject.Pinta"
 
 packages_python:
   - http-prompt
@@ -54,19 +95,19 @@ packages_python:
   - visidata
 
 packages_bin_binaries:
-  - https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip
-  - https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_amd64.zip
-  - https://github.com/dandavison/delta/releases/download/0.8.3/delta-0.8.3-x86_64-unknown-linux-gnu.tar.gz
-  - https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
-  - https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
-  - https://github.com/sharkdp/fd/releases/download/v8.2.1/fd-v8.2.1-x86_64-unknown-linux-gnu.tar.gz
+  - https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip
+  - https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_linux_amd64.zip
+  - https://github.com/dandavison/delta/releases/download/0.14.0/delta-0.14.0-x86_64-unknown-linux-gnu.tar.gz
+  - https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz
+  - https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-unknown-linux-gnu.tar.gz
+  - https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz
   - https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip 
   - https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
   - https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
-  - https://github.com/Canop/broot/releases/download/v1.6.3/broot_1.6.3.zip
-  - https://github.com/fullstorydev/grpcurl/releases/download/v1.8.2/grpcurl_1.8.2_linux_x86_64.tar.gz
-  - https://github.com/golangci/golangci-lint/releases/download/v1.42.1/golangci-lint-1.42.1-linux-amd64.tar.gz
-  - https://github.com/stern/stern/releases/download/v1.20.1/stern_1.20.1_linux_amd64.tar.gz
+  - https://github.com/Canop/broot/releases/download/v1.21.3/broot_1.21.3.zip
+  - https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/grpcurl_1.8.7_linux_x86_64.tar.gz
+  - https://github.com/golangci/golangci-lint/releases/download/v1.52.2/golangci-lint-1.52.2-linux-amd64.tar.gz
+  - https://github.com/stern/stern/releases/download/v1.25.0/stern_1.25.0_linux_amd64.tar.gz
   - https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_Linux_x86_64.tar.gz
-  - https://dl.k8s.io/release/v1.22.2/bin/linux/amd64/kubectl
-  - https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
+  - https://dl.k8s.io/release/v1.27.1/bin/linux/amd64/kubectl
+  - https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux

@@ -3,6 +3,7 @@
   tasks:
     - import_role: name=rpmfusion
       tags: rpmfusion
+      when: ansible_distribution_file_variety == "RedHat"
 
     - import_role: name=packages
       tags: packages

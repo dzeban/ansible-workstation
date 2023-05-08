@@ -1,15 +1,29 @@
 ---
-- name: Import GPG keys
-  rpm_key:
-    key: "{{ item }}"
-  loop: "{{ packages_gpg_keys }}"
-  become: yes
-
 - name: Install packages
-  dnf:
-    name: "{{ packages_system }}"
+  package:
+    name: "{{ lookup('list', packages_system[ansible_distribution_file_variety]) }}"
     state: latest
   become: yes
+
+- name: Install 3rd party packages from flathub
+  become: yes
+  block:
+  - name: Install flatpak
+    apt:
+      name: flatpak
+    when: ansible_distribution_file_variety == "Debian"
+    # On Fedora/RedHat it's installed by default
+
+  - name: Add flathub remote
+    flatpak_remote:
+      name: flathub
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+  - name: Install flatpaks
+    flatpak:
+      name: "{{ item }}"
+      remote: flathub
+    loop: "{{ packages_flatpak }}"
 
 - name: Install python packages
   command: python3 -m pip install --upgrade {{ item }}
