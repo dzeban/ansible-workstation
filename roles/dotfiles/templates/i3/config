@@ -46,6 +46,12 @@ bindsym $mod+q kill
 bindsym $mod+p 	     exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+p exec --no-startup-id rofi -show  run -show-icons
 
+# dunst notifications
+bindsym Ctrl+space       exec --no-startup-id dunstctl close
+bindsym Ctrl+Shift+space exec --no-startup-id dunstctl close-all
+bindsym Ctrl+Tab         exec --no-startup-id dunstctl history-pop
+bindsym Ctrl+Shift+.     exec --no-startup-id dunstctl context
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
