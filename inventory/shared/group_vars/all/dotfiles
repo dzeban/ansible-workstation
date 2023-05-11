@@ -5,7 +5,7 @@ dotfiles_config:
     type: dir
 
   - src: polybar.ini
-    dst: ~/.config/polybar/config.ini
+    dst: ~/.config/polybar/config
 
   - src: polybar.sh
     dst: ~/.config/polybar/polybar.sh
