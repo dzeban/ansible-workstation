@@ -3,14 +3,22 @@ packages_system:
   Debian:
     - xserver-xorg-input-synaptics  #
     - x11-xserver-utils  # xset, xsetroot
+    - x11-utils  # xkill
+    - blueman
     - xsecurelock
-    - xautolock
+    - xss-lock
+    - arandr
+    - autorandr
     - polybar
     - rofi
     - fonts-roboto  #
+    - fonts-hack  #
     - system-config-printer
+    - pavucontrol
+    - brightnessctl
     - sysstat
     - strace
+    - kitty
     - tmux
     - git
     - tig
@@ -27,7 +35,6 @@ packages_system:
     - perl  # shasum
     - clipit
     - xclip  # for Vim clipboard
-    - x11-utils  # xkill
     - network-manager-openvpn  #
     - network-manager-openvpn-gnome  #
     - universal-ctags  # ctags
@@ -46,14 +53,23 @@ packages_system:
     - xorg-x11-drv-synaptics-legacy
     - xset
     - xsetroot
+    - clipit
+    - xclip  # for Vim clipboard
+    - xkill
     - xsecurelock
-    - xautolock
+    - xss-lock
+    - arandr
+    - autorandr
     - polybar
     - rofi
     - google-roboto-mono-fonts
+    - source-foundry-hack-fonts
     - system-config-printer
+    - pavucontrol
+    - brightnessctl
     - sysstat
     - strace
+    - kitty
     - tmux
     - git 
     - tig
@@ -68,9 +84,6 @@ packages_system:
     - redshift-gtk
     - mutt
     - perl-Digest-SHA  # shasum
-    - clipit
-    - xclip  # for Vim clipboard
-    - xkill
     - NetworkManager-openvpn
     - ctags
     - mc
