@@ -246,8 +246,10 @@ nmap("<c-w>z", ":ZoomWinTabToggle<CR>")
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = { "c", "dockerfile", "go", "gomod", "gowork", "graphql",
-        "hcl", "help", "html", "http", "json", "lua", "make", "proto", "python",
+        "hcl", "html", "vimdoc", "http", "json", "lua", "make", "proto", "python",
         "rust", "toml", "vim", "yaml" },
+
+    ignore_install = { "help" },
 
     textobjects = {
         enable = enable,
