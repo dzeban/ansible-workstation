@@ -1,7 +1,8 @@
 lsp_shared_setup = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting()")
-    end
+    -- When this enabled, Go mapping don't work :shrug:
+    -- if client.resolved_capabilities.document_formatting then
+    --     vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting()")
+    -- end
 
     -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
