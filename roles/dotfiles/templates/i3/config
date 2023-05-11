@@ -12,14 +12,13 @@ default_border pixel 1
 
 # Keyboard configuration
 # Configure layout, set caps lock to ctrl, configure repeat rate and delay
-exec --no-startup-id setxkbmap -layout "us,ru" -variant ",winkeys" -option "grp:alt_shift_toggle,ctrl:nocaps"
-exec --no-startup-id xset r rate 200 60
+exec_always --no-startup-id setxkbmap -layout "us,ru" -variant ",winkeys" -option "grp:alt_shift_toggle,ctrl:nocaps"
+exec_always --no-startup-id xset r rate 200 60
 
 # Set solid background
 exec --no-startup-id xsetroot -solid "#111"
 
 # Autolock after inactivity period (configured via xset) and on suspend
-# exec --no-startup-id xautolock -detectsleep -time 5 -locker "xsecurelock"
 exec --no-startup-id xset s 300
 exec --no-startup-id xss-lock -- xsecurelock
 
