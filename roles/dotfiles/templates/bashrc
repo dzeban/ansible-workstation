@@ -106,3 +106,5 @@ export GCP_AUTH_KIND=application
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 [ -d .config/broot ] && source /home/avd/.config/broot/launcher/bash/br
+
+{{ dotfiles_bashrc_custom }}
