@@ -215,6 +215,7 @@ nmap("<F5>", ":cclose<cr>")
 -- Save triggers neomake, I don't want to constantly run it.
 g.workspace_autosave = 0
 g.workspace_session_disable_on_args = 1
+g.workspace_undodir = HOME .. "/.vim/undodir"
 
 -- Because sessions are long-lived buffers are piled.
 -- This command and shortcut is very handy!
