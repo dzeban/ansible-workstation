@@ -28,7 +28,7 @@ local pkgs = {
     "blueyed/vim-qf_resize";
 
     "ray-x/go.nvim";
-    -- "ray-x/guihua.lua";
+    "ray-x/guihua.lua"; -- for :GoTest commands
 
     "dense-analysis/ale";
     "hashivim/vim-terraform";
