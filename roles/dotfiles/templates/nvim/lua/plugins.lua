@@ -28,10 +28,16 @@ local pkgs = {
     "blueyed/vim-qf_resize";
 
     "ray-x/go.nvim";
-    "ray-x/guihua.lua"; -- for :GoTest commands
+    "ray-x/guihua.lua";
+
+    "pedrohdz/vim-yaml-folds";
 
     "dense-analysis/ale";
     "hashivim/vim-terraform";
+    "towolf/vim-helm";
+    
+    "vmware-archive/salt-vim";
+    "Glench/Vim-Jinja2-Syntax";
 
     { "nvim-treesitter/nvim-treesitter", run = vim.fn[":TSUpdate"] };
     "nvim-treesitter/nvim-treesitter-textobjects";

@@ -4,7 +4,11 @@
 Session.vim
 .undodir
 
+# Upcoming commit message
+commit.msg
+
 *.code-workspace
+.vscode
 .tags
 tags
 cscope.out

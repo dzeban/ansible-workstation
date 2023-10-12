@@ -18,6 +18,9 @@
 [interactive]
     diffFilter = delta --color-only
 
+[diff]
+    tool = nvimdiff
+
 [push]
     default = simple
 

@@ -27,9 +27,8 @@ cmd([[
     autocmd BufRead,BufNewFile *.conf setfiletype config
     autocmd BufRead,BufNewFile *.pp setfiletype ruby
     autocmd BufRead,BufNewFile alert.rules setfiletype yaml "prometheus alert rules are yaml
-    autocmd BufRead,BufNewFile *.sls setfiletype yaml "Salt states
     autocmd BufRead,BufNewFile *.tpl setfiletype yaml "Helm templates
-    autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
+    autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 foldmethod=indent foldlevelstart=20 cursorcolumn
     autocmd FileType go setlocal noexpandtab
 ]])
 
@@ -70,6 +69,8 @@ opt.number = true
 -- Don't show spaces.
 -- Trailing whitespace is handled by sensible plugin.
 opt.list = false
+
+opt.cursorline = true
 
 -- Indentation settings
 opt.autoindent = true
@@ -339,6 +340,7 @@ vim.diagnostic.disable()
 -- Show lint errors inline as virtual text
 g.ale_virtualtext_cursor = 1
 g.ale_echo_cursor = 0
+g.ale_go_golangci_lint_package = 1
 
 -- Telescope
 -- nmap("<leader>f", "<cmd>Telescope find_files<cr>")
