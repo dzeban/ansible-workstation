@@ -12,3 +12,6 @@ terraform_download_dir: "{{ ansible_user_dir }}/soft"
 dotfiles_git_user:
   name: Alex Dzyoba
   email: adzyoba@cloudflare.com
+
+dotfiles_bashrc_custom: |
+  export GOPRIVATE=code.cfdata.org,go.cfdata.org
