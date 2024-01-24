@@ -4,11 +4,11 @@ then
 	alias vim='vimx'
 fi
 
-# command -v nvim 1>/dev/null
-# has_nvim=$?
-# if [[ $has_nvim -eq 0 ]]; then
-# 	alias vim=nvim
-# fi
+command -v nvim 1>/dev/null
+has_nvim=$?
+if [[ $has_nvim -eq 0 ]]; then
+	alias vim=nvim
+fi
 
 alias md5='md5sum'
 
@@ -56,7 +56,7 @@ alias lm='la | less'
 alias mv='mv -i'
 alias rm='rm -i'
 
-export GREP_COLOR="1;33"
+export GREP_COLOR="mt=1;33"
 alias grep='grep --color=auto'
 
 alias ssh='ssh -o ConnectionAttempts=100'

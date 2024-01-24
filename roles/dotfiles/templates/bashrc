@@ -90,7 +90,7 @@ command -v aws_completer > /dev/null && complete -C "$(which aws_completer)" aws
 
 export GOPATH=$HOME/go
 # export GOROOT=$HOME/soft/go
-export PATH="$PATH:/usr/local/go/bin:$HOME/soft/go/bin:$GOPATH/bin:$HOME/.local/bin:$HOME/bin:/var/lib/snapd/snap/bin:${KREW_ROOT:-$HOME/.krew}/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/soft/go/bin:$GOPATH/bin:$HOME/.local/bin:$HOME/bin:$HOME/.yarn/bin:/var/lib/snapd/snap/bin:${KREW_ROOT:-$HOME/.krew}/bin"
 
 export PYTHONDONTWRITEBYTECODE=1
 export FZF_DEFAULT_COMMAND='fd --type f'
