@@ -83,6 +83,16 @@ augroup end
 lspconfig.pylsp.setup({
     capabilities = capabilities,
     on_attach = lsp_shared_setup,
+    settings = {
+        configurationSources = {"flake8"},
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = {"E501"},
+                }
+            }
+        }
+    }
 })
 
 lspconfig.rust_analyzer.setup({
