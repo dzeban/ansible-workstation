@@ -39,7 +39,7 @@ local pkgs = {
     "vmware-archive/salt-vim";
     "Glench/Vim-Jinja2-Syntax";
 
-    { "nvim-treesitter/nvim-treesitter", run = vim.fn[":TSUpdate"] };
+    { "nvim-treesitter/nvim-treesitter", build = vim.fn[":TSUpdate"] };
     "nvim-treesitter/nvim-treesitter-textobjects";
     "romgrk/nvim-treesitter-context";
     "JoosepAlviste/nvim-ts-context-commentstring";

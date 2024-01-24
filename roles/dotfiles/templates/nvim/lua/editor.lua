@@ -5,12 +5,11 @@ local g = vim.g
 HOME = os.getenv("HOME")
 
 opt.termguicolors = true
--- cmd("colorscheme tile")
 cmd([[
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
-    " Make `Function`s bold in GUI mode
+    " Make comments yellow to easily see them
     autocmd ColorScheme * call onedark#set_highlight("Comment", {"fg": { "gui": "gold", "cterm": "11" }})
     autocmd ColorScheme * call onedark#set_highlight("Normal", {"fg": { "gui": "lightgrey", "cterm": "white" }})
     autocmd ColorScheme * call onedark#set_highlight("String", {"fg": { "gui": "pink1", "cterm": "lightred" }})
@@ -138,7 +137,7 @@ nmap("<C-W>,", "<C-W>5<")
 
 -- Make :cnext, :cprev, :lnext, :lprev cycle
 -- to avoid stupid 'No more items' error
-vim.cmd([[
+cmd([[
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 command! Lnext try | lnext | catch | lfirst | catch | endtry
@@ -228,12 +227,12 @@ g.terraform_fmt_on_save = 1 -- This doesn't work in autocmd
 nmap("ysw", "ysiW")
 
 -- For some reason this cannot be applied in Lua
-vim.cmd("set updatetime=400")
+cmd("set updatetime=400")
 
 -- g.git_messenger_include_diff = "current"
 
 -- Startify order
-vim.cmd([[
+cmd([[
 let g:startify_lists = [
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
       \ { 'type': 'dir',       'header': ['   Recent files in '. getcwd()] },
