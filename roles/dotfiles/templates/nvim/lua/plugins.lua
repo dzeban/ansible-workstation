@@ -32,7 +32,7 @@ local pkgs = {
 
     "pedrohdz/vim-yaml-folds";
 
-    "dense-analysis/ale";
+    -- "dense-analysis/ale";
     "hashivim/vim-terraform";
     "towolf/vim-helm";
     

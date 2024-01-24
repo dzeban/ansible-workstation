@@ -323,23 +323,16 @@ require("nvim-treesitter.configs").setup({
             node_decremental = "grm",
         },
     },
-
-    context_commentstring = {
-        enable = true,
-    },
 })
 
 require("Comment").setup()
 
--- Disable diagnostics because we use ALE for that.
--- Diagnostics sources are limited to LSP while ALE can run external programs
--- for linting and show errors on hover.
-vim.diagnostic.disable()
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- Show lint errors inline as virtual text
-g.ale_virtualtext_cursor = 1
-g.ale_echo_cursor = 0
-g.ale_go_golangci_lint_package = 1
+-- g.ale_virtualtext_cursor = 1
+-- g.ale_echo_cursor = 0
+-- g.ale_go_golangci_lint_package = 1
 
 -- Telescope
 -- nmap("<leader>f", "<cmd>Telescope find_files<cr>")
