@@ -31,6 +31,7 @@ local pkgs = {
     "ray-x/guihua.lua";
 
     "pedrohdz/vim-yaml-folds";
+    "stephpy/vim-yaml"; -- Faster yaml syntax, cursor movements are not slow with this.
 
     -- "dense-analysis/ale";
     "hashivim/vim-terraform";
