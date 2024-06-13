@@ -94,6 +94,7 @@ export PATH="$PATH:/usr/local/go/bin:$HOME/soft/go/bin:$GOPATH/bin:$HOME/.local/
 
 export PYTHONDONTWRITEBYTECODE=1
 export FZF_DEFAULT_COMMAND='fd --type f'
+export BUILDKIT_PROGRESS=plain
 
 # Configure google-auth python lib to use credentials from gcloud
 # This is needed for ansible dynamic inventory
