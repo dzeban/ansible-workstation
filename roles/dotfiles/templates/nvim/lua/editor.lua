@@ -370,9 +370,9 @@ let g:fzf_action = {
 
 -- Go
 require("go").setup({
-    gofmt = "gofmt",
-    goimport = "goimports",
-    max_line_len = 200,
+    -- gofmt = "gofmt",
+    -- goimport = "goimports",
+    -- max_line_len = 200,
 })
 cmd("autocmd BufWritePre *.go :GoImport")
 
