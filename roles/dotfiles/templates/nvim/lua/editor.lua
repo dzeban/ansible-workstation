@@ -108,12 +108,20 @@ nmap("j", "gj")
 nmap("k", "gk")
 
 -- Center view on search result
-nmap("n", "nzz")
-nmap("N", "Nzz")
-nmap("*", "*zz")
-nmap("#", "#zz")
-nmap("g*", "g*zz")
-nmap("g#", "g#zz")
+-- nmap("n", "nzz")
+-- nmap("N", "Nzz")
+-- nmap("*", "*zz")
+-- nmap("#", "#zz")
+-- nmap("g*", "g*zz")
+-- nmap("g#", "g#zz")
+
+-- Keep context during search, replace and other scroll commands
+opt.scrolloff = 5
+
+-- Stay in visual mode when indenting
+vmap("<", "<gv")
+vmap(">", ">gv")
+
 
 -- Map BOL/EOL to 9/0 respectively
 nmap("0", "$")
