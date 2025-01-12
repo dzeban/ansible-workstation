@@ -1,5 +1,5 @@
 lsp_shared_setup = function(client, bufnr)
-    -- When this enabled, Go mapping don't work :shrug:
+    -- When this enabled, LSP mappings don't work :shrug:
     -- if client.resolved_capabilities.document_formatting then
     --     vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.formatting()")
     -- end
@@ -120,6 +120,9 @@ lspconfig.rust_analyzer.setup({
             checkOnSave = {
                 command = "clippy",
             },
+            rustfmt = {
+                
+            }
         }
     }
 })

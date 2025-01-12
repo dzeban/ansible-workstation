@@ -10,4 +10,4 @@ Bootstrap my workstation with Ansible
 
 ## TODO
 
-- [x] Try to use "just" to pass `--tags` arg.
+- [ ] Move i3, polybar, Xresources, autorandr configuration to desktop role

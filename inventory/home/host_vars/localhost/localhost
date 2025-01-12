@@ -3,7 +3,7 @@ host_mode: home
 
 neovim_dest_dir: "{{ ansible_user_dir }}/soft"
 neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
-golang_version: "1.18"
+golang_version: "1.22.1"
 
 terraform_install_dir: "{{ ansible_user_dir }}/bin"
 terraform_download_dir: "{{ ansible_user_dir }}/soft"

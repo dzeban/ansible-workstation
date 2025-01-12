@@ -1,15 +1,14 @@
 ---
 - name: Enable better fonts copr
-  command: dnf -y copr enable {{ desktop_fonts_copr }}
-  args:
-    warn: no # because dnf module doesn't support copr
+  community.general.copr:
+    name: "{{ desktop_fonts_copr }}"
   become: yes
 
-- name: Hack to make fontconfig-enhanced-defaults work
-  dnf:
-    name: "https://download.copr.fedorainfracloud.org/results/dawid/better_fonts/fedora-34-x86_64/02077386-archivo-black-fonts/archivo-black-fonts-1.001-1.fc34.noarch.rpm"
-    disable_gpg_check: yes
-  become: yes
+# - name: Hack to make fontconfig-enhanced-defaults work
+#   dnf:
+#     name: "https://download.copr.fedorainfracloud.org/results/dawid/better_fonts/fedora-34-x86_64/02077386-archivo-black-fonts/archivo-black-fonts-1.001-1.fc34.noarch.rpm"
+#     disable_gpg_check: yes
+#   become: yes
 
 - name: Install better fonts packages
   dnf:
