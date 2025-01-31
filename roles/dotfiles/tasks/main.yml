@@ -1,15 +1,16 @@
 ---
-- name: Deploy simple dotfiles
-  include_tasks: files.yml
-  loop: "{{ dotfiles_config }}"
-  when: item.type is undefined or item.type == "file"
+- name: Ensure dev dir
+  file:
+    path: "{{ dotfiles_path | dirname }}"
+    state: directory
 
-- name: Deploy templates
-  include_tasks: templates.yml
-  loop: "{{ dotfiles_config }}"
-  when: "(item.type | default('file'))== 'template'"
+- name: Ensure dotfiles git repo
+  git:
+    repo: "git@github.com:dzeban/dotfiles.git"
+    dest: "{{ dotfiles_path }}"
+    update: no
 
-- name: Deploy directories
-  include_tasks: dirs.yml
-  loop: "{{ dotfiles_config }}"
-  when: "(item.type | default('file'))== 'dir'"
+- name: Run homemmaker
+  command: make {{ host_mode }}
+  args:
+    chdir: "{{ dotfiles_path }}"

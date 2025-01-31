@@ -1,2 +1,2 @@
 ---
-dotfiles_bashrc_custom: ""
+dotfiles_path: "{{ ansible_user_dir }}/dev/dotfiles"
