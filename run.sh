@@ -6,15 +6,7 @@ apply() {
     local inventory=$1
     shift
 
-    tags='all'
-    while getopts "t:" opt; do
-        case $opt in
-            t) tags=${OPTARG} ;;
-            *) usage; exit 1;;
-        esac
-    done
-
-    ansible-playbook -i inventory/${inventory} -K site.yml --tags "${tags}"
+    ansible-playbook -i inventory/${inventory} -K site.yml "${@}"
 }
 
 reqs() {
@@ -42,15 +34,14 @@ usage() {
     echo "  work      Apply work configuration"
     echo "  reqs      Install requirements (ansible)"
     echo ""
-    echo "Options for 'home' and 'work' commands:"
-    echo "  -t <value>   ansible tags, comma separated. Default is 'all'"
+    echo "'home' and 'work' commands accept ansible-playbook options"
     echo ""
     echo "Example usage:"
     echo "  $0 home                  # Apply configuration for home machine"
-    echo "  $0 home -t packages      # Apply the home configuration, but only packages"
+    echo "  $0 home -t packages      # Apply the home configuration, but only packages tags"
     echo ""
-    echo "  $0 work                  # Apply configuration for work machine"
-    echo "  $0 work -t dotfiles,ssh  # Apply the work configuration, but only dotfiles and ssh"
+    echo "  $0 work                      # Apply configuration for work machine"
+    echo "  $0 work -vv -t dotfiles,ssh  # Apply the work configuration, but only dotfiles and ssh tags, be verbose"
     echo ""
     echo "  $0 reqs                  # Install requirements"
     echo ""
