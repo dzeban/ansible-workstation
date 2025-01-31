@@ -1,7 +1,10 @@
 ---
-
-golang_version: "1.10" # without quotes 1.10 will be 1.1 :facepalm:
+golang_version: "latest"
 golang_platform: linux
 golang_arch: amd64
-golang_download_url: "https://dl.google.com/go/go{{ golang_version }}.{{ golang_platform }}-{{golang_arch}}.tar.gz"
-golang_install_dir: "{{ ansible_user_dir }}/soft/go-{{ golang_version }}"
+golang_install_dir: "{{ ansible_user_dir }}/soft/go"
+golang_install_location: "{{ golang_install_dir }}/{{ golang_install_version }}"
+golang_go_path: "{{ ansible_user_dir }}/bin/go"
+
+golang_latest_version_url: "https://go.dev/VERSION?m=text"
+golang_download_url: "https://go.dev/dl/{{ golang_install_version }}.{{ golang_platform }}-{{golang_arch}}.tar.gz"

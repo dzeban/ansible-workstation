@@ -1,4 +1,8 @@
 ---
+- name: Get latest version
+  set_fact:
+    golang_install_version: "{{ lookup('url', golang_latest_version_url, wantlist=True) | first }}"
+  when: golang_version == "latest"
 
 - name: Ensure install directory
   file:
@@ -9,17 +13,17 @@
   unarchive:
     remote_src: yes
     src: "{{ golang_download_url }}"
-    dest: "{{ golang_install_dir }}"
-    extra_opts: "--strip-components=1" # strip "go" dir because it's included in "golang_install_dir"
-    creates: "{{ golang_install_dir}}/ansible_managed_{{ golang_version }}"
+    dest: "{{ golang_install_location }}"
+    extra_opts: "--strip-components=1" # strip "go" dir because it's included in "golang_install_location"
+    creates: "{{ golang_install_location}}/ansible_managed_{{ golang_version }}"
 
 - name: Put file to avoid unnecessary update
   copy:
     src: files/ansible-managed
-    dest: "{{ golang_install_dir}}/ansible_managed_{{ golang_version }}"
+    dest: "{{ golang_install_location}}/ansible_managed_{{ golang_version }}"
 
 - name: Link current go version
   file:
     state: link
-    src: "{{ golang_install_dir }}"
-    dest: "{{ ansible_user_dir }}/soft/go"
+    src: "{{ golang_install_location }}"
+    dest: "{{ golang_install_dir }}/go"

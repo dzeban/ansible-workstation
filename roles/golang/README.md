@@ -3,16 +3,15 @@ golang
 
 Install Go language toolchain.
 
-By default, it's installed in ~/go. 
+By default, it's installed in ~/soft/go. 
 `PATH` variable is not updated.
 
 Role Variables
 --------------
 
-	golang_version: 1.10
+	golang_version: "latest"
 	golang_platform: linux
 	golang_arch: amd64
-	golang_install_dir: "{{ ansible_user_dir }}/go"
 
 Example Playbook
 ----------------
@@ -21,7 +20,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: alexdzyoba.golang, golang_version: 1.9 }
+         - { role: alexdzyoba.golang 
 
 License
 -------
