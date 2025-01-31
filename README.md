@@ -4,9 +4,8 @@ Bootstrap my workstation with Ansible
 
 ## Quickstart
 
-* Install [just](https://github.com/casey/just)
-* `just reqs`
-* `just home`
+* `./run.sh reqs`
+* `./run.sh home`
 
 ## TODO
 
