@@ -17,6 +17,7 @@
 
 - name: Ensure python modules
   command: python3 -m pip install --upgrade pynvim neovim
+  when: ansible_distribution_file_variety != "Debian"
 
 - name: Ensure config dir
   file:
