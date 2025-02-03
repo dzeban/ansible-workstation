@@ -108,19 +108,20 @@ packages_python:
   - visidata
 
 packages_bin_binaries:
-  - https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip
-  - https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_linux_amd64.zip
-  - https://github.com/dandavison/delta/releases/download/0.14.0/delta-0.14.0-x86_64-unknown-linux-gnu.tar.gz
-  - https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz
-  - https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-unknown-linux-gnu.tar.gz
-  - https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz
+  - https://releases.hashicorp.com/terraform/1.10.5/terraform_1.10.5_linux_amd64.zip
+  - https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_linux_amd64.zip
+  - https://github.com/junegunn/fzf/releases/download/v0.59.0/fzf-0.59.0-linux_amd64.tar.gz
+  - https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-gnu.tar.gz
+  - https://get.helm.sh/helm-v3.17.0-linux-amd64.tar.gz
+  - https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-gnu.tar.gz
+  - https://github.com/sharkdp/fd/releases/download/v10.2.0/fd-v10.2.0-x86_64-unknown-linux-gnu.tar.gz
   - https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip 
   - https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip
   - https://github.com/XAMPPRocky/tokei/releases/download/v12.1.2/tokei-x86_64-unknown-linux-gnu.tar.gz
-  - https://github.com/Canop/broot/releases/download/v1.21.3/broot_1.21.3.zip
-  - https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/grpcurl_1.8.7_linux_x86_64.tar.gz
-  - https://github.com/golangci/golangci-lint/releases/download/v1.52.2/golangci-lint-1.52.2-linux-amd64.tar.gz
-  - https://github.com/stern/stern/releases/download/v1.25.0/stern_1.25.0_linux_amd64.tar.gz
+  - https://github.com/Canop/broot/releases/download/v1.44.6/broot_1.44.6.zip
+  - https://github.com/fullstorydev/grpcurl/releases/download/v1.9.2/grpcurl_1.9.2_linux_x86_64.tar.gz
+  - https://github.com/golangci/golangci-lint/releases/download/v1.63.4/golangci-lint-1.63.4-linux-amd64.tar.gz
+  - https://github.com/stern/stern/releases/download/v1.32.0/stern_1.32.0_linux_amd64.tar.gz
   - https://github.com/alexdzyoba/tzconv/releases/download/2/tzconv_2_Linux_x86_64.tar.gz
-  - https://dl.k8s.io/release/v1.27.1/bin/linux/amd64/kubectl
-  - https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
+  - https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl
+  - https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.linux.amd64
