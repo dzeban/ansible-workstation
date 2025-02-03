@@ -1,5 +1,4 @@
 ---
-
 - block:
   - name: Uninstall old packages
     dnf:
@@ -15,7 +14,7 @@
       state: present
 
   - name: Add Docker CE repo
-    command: dnf config-manager --add-repo {{ docker_repo }}
+    command: dnf config-manager --add-repo {{ docker_repo.Fedora }}
 
   - name: Install Docker packages
     dnf:
