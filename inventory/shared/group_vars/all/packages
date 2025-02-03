@@ -1,6 +1,6 @@
 ---
 packages_system:
-  Debian:
+  Ubuntu:
     - xserver-xorg-input-synaptics  #
     - x11-xserver-utils  # xset, xsetroot
     - x11-utils  # xkill
@@ -49,7 +49,10 @@ packages_system:
     - wireguard  #
     - entr
     - telnet
-  RedHat:
+    - ansible-lint
+    - visidata
+    - libfuse2
+  Fedora:
     - xorg-x11-drv-synaptics-legacy
     - xset
     - xsetroot

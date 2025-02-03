@@ -1,7 +1,7 @@
 ---
 - name: Install packages
   package:
-    name: "{{ lookup('list', packages_system[ansible_distribution_file_variety]) }}"
+    name: "{{ lookup('list', packages_system[ansible_distribution]) }}"
     state: latest
   become: yes
 
@@ -11,7 +11,7 @@
   - name: Install flatpak
     apt:
       name: flatpak
-    when: ansible_distribution_file_variety == "Debian"
+    when: ansible_distribution == "Ubuntu"
     # On Fedora/RedHat it's installed by default
 
   - name: Add flathub remote
@@ -28,6 +28,7 @@
 - name: Install python packages
   command: python3 -m pip install --upgrade {{ item }}
   loop: "{{ packages_python }}"
+  when: ansible_distribution != "Ubuntu"
 
 - import_tasks: bin.yml
   when: packages_bin_binaries

@@ -3,7 +3,7 @@
   tasks:
     - import_role: name=rpmfusion
       tags: rpmfusion
-      when: ansible_distribution_file_variety == "RedHat"
+      when: ansible_distribution == "Fedora"
 
     - import_role: name=packages
       tags: packages
@@ -49,4 +49,4 @@
         regexp: '^SELINUX='
         line: 'SELINUX=disabled'
       tags: system
-      when: ansible_distribution_file_variety == "RedHat" or host_mode == "home"
+      when: ansible_distribution == "Fedora" or host_mode == "home"
