@@ -1,27 +1,12 @@
 ---
 
+- include_tasks: fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- include_tasks: ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
 - block:
-  - name: Add dnf plugins core to add repo
-    dnf:
-      name: dnf-plugins-core
-      state: present
-
-  - name: Add Docker CE repo
-    command: dnf config-manager --add-repo {{ docker_repo }}
-
-  - name: Install Docker packages
-    dnf:
-      name: "{{ docker_packages }}"
-      state: latest
-
-  - name: Install docker-compose
-    get_url:
-      url: "{{ docker_compose_url }}"
-      dest: "{{ docker_compose_dest }}"
-      mode: 0755
-      owner: root
-      group: root
-
   - name: Ensure Docker service
     systemd:
       name: docker

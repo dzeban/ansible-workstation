@@ -1,0 +1,24 @@
+---
+
+- block:
+  - name: Uninstall old packages
+    dnf:
+      name: "{{ item }}"
+      state: absent 
+    loop: [docker, docker-client, docker-client-latest, docker-common,
+    docker-latest, docker-latest-logrotate, docker-logrotate, docker-selinux,
+    docker-engine-selinux, docker-engine]
+
+  - name: Add dnf plugins core to add repo
+    dnf:
+      name: dnf-plugins-core
+      state: present
+
+  - name: Add Docker CE repo
+    command: dnf config-manager --add-repo {{ docker_repo }}
+
+  - name: Install Docker packages
+    dnf:
+      name: "{{ docker_packages }}"
+      state: latest
+  become: yes

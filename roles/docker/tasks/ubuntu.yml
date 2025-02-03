@@ -1,0 +1,36 @@
+---
+
+- block:
+  - name: Uninstall old versions
+    apt:
+      name: "{{ item }}"
+      state: absent
+    loop: ["docker.io", "docker-doc", "docker-compose", "docker-compose-v2", "podman-docker", "containerd", "runc"]
+
+  - name: Ensure apt keyrings dir
+    file:
+      path: "{{ docker_ubuntu_key.path | dirname }}"
+      state: directory
+      mode: "0755"
+
+  - name: Get docker key
+    get_url:
+      url: "{{ docker_ubuntu_key.url }}"
+      dest: "{{ docker_ubuntu_key.path }}"
+      mode: 0644
+
+  - set_fact:
+      docker_arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', ansible_architecture) }}"
+
+  - name: Configure docker repo
+    apt_repository:
+      repo: "deb [arch={{ docker_arch }} signed-by={{ docker_ubuntu_key.path }}] {{ docker_repo[ansible_distribution] }} {{ ansible_distribution_release }} stable"
+      filename: docker
+
+  - name: Install docker packages
+    apt:
+      name: "{{ item }}"
+      update_cache: yes
+    loop: "{{ docker_packages }}"
+  
+  become: yes
