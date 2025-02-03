@@ -19,7 +19,6 @@ packages_system:
     - brightnessctl
     - sysstat
     - strace
-    - kitty
     - tmux
     - git
     - tig
@@ -71,7 +70,6 @@ packages_system:
     - brightnessctl
     - sysstat
     - strace
-    - kitty
     - tmux
     - git 
     - tig
