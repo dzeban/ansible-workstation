@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable right click on touchpad
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/synclient RightButtonAreaLeft=0
+ExecStart=/usr/bin/synclient RightButtonAreaTop=0
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

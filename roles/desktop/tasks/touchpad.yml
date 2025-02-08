@@ -20,10 +20,19 @@
     dest: "{{ ansible_user_dir }}/.config/systemd/user/syndaemon.service"
     mode: 0644
 
-- name: Ensure syndaemon service
+- name: Render synaptics oneshot service to disable right button click
+  template:
+    src: templates/synaptics.service
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/synaptics.service"
+    mode: 0644
+
+- name: Ensure touchpad services
   systemd:
     scope: user
-    name: syndaemon
+    name: "{{ item }}"
     daemon_reload: yes
     state: restarted
     enabled: yes
+  loop:
+    - syndaemon
+    - synaptics
