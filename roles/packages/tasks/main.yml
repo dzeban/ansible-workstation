@@ -5,25 +5,27 @@
     state: latest
   become: yes
 
-- name: Install 3rd party packages from flathub
-  become: yes
-  block:
-  - name: Install flatpak
-    apt:
-      name: flatpak
-    when: ansible_distribution == "Ubuntu"
-    # On Fedora/RedHat it's installed by default
+- block:
+  - name: Install 3rd party packages from flathub
+    become: yes
+    block:
+    - name: Install flatpak
+      apt:
+        name: flatpak
+      when: ansible_distribution == "Ubuntu"
+      # On Fedora/RedHat it's installed by default
 
-  - name: Add flathub remote
-    flatpak_remote:
-      name: flathub
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    - name: Add flathub remote
+      flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-  - name: Install flatpaks
-    flatpak:
-      name: "{{ item }}"
-      remote: flathub
-    loop: "{{ packages_flatpak }}"
+    - name: Install flatpaks
+      flatpak:
+        name: "{{ item }}"
+        remote: flathub
+      loop: "{{ packages_flatpak }}"
+  when: host_mode == "home"
 
 - name: Install python packages
   command: python3 -m pip install --upgrade {{ item }}
