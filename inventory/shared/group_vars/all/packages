@@ -12,6 +12,7 @@ packages_system:
     - polybar
     - dunst
     - rofi
+    - alacritty
     - fonts-roboto  #
     - fonts-hack  #
     - system-config-printer
@@ -66,6 +67,7 @@ packages_system:
     - polybar
     - dunst
     - rofi
+    - alacritty
     - google-roboto-mono-fonts
     - source-foundry-hack-fonts
     - system-config-printer
