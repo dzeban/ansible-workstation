@@ -1,4 +1,9 @@
 ---
+- name: Ensure path
+  file:
+    state: directory
+    dest: "{{ neovim_dest_dir }}"
+
 - name: Download Neovim appimage
   get_url:
     url: "{{ neovim_appimage_url }}"
