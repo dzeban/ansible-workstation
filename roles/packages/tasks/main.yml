@@ -34,3 +34,4 @@
 
 - import_tasks: bin.yml
   when: packages_bin_binaries
+  tags: bin

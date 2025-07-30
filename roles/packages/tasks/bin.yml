@@ -1,4 +1,9 @@
 ---
+- name: Ensure bin path
+  file:
+    state: directory
+    path: "{{ packages_bin_path }}"
+
 - name: Install bin
   get_url:
     url: "{{ packages_bin_url }}"
@@ -7,5 +12,5 @@
   become: yes
 
 - name: Install binaries
-  command: bin install {{ item }}
+  command: "{{ packages_bin_path }}/bin install {{ item }}"
   loop: "{{ packages_bin_binaries }}"
