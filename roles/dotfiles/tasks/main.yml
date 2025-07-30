@@ -9,6 +9,7 @@
     repo: "git@github.com:dzeban/dotfiles.git"
     dest: "{{ dotfiles_path }}"
     update: no
+    recursive: true
 
 - name: Run homemmaker
   command: make {{ host_mode }}
