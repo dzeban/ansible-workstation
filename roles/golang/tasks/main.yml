@@ -6,7 +6,7 @@
 
 - name: Ensure install directory
   file:
-    path: "{{ golang_install_dir }}"
+    path: "{{ golang_install_location }}"
     state: directory
 
 - name: Unpack golang toolchain
