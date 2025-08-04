@@ -27,6 +27,7 @@ packages_system:
     - make
     - gcc
     - clang
+    - clangd
     - patch
     - luajit
     - meld
@@ -82,6 +83,7 @@ packages_system:
     - make
     - gcc
     - clang
+    - clangd
     - patch
     - luajit
     - meld
