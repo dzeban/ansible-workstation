@@ -106,7 +106,6 @@ packages_system:
     - telnet
 
 packages_flatpak:
-  - "com.google.Chrome"
   - "com.github.PintaProject.Pinta"
 
 packages_python:
