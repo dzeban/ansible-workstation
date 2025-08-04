@@ -63,6 +63,9 @@ packages_system:
     - xkill
     - xsecurelock
     - xss-lock
+    - fprintd
+    - libfprint
+    - pamtester
     - arandr
     - autorandr
     - polybar

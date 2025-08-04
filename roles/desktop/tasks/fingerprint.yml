@@ -1,0 +1,19 @@
+---
+- block:
+  - name: Enable PAM fingerprint authentication
+    command: authselect enable-feature with-fingerprint
+    register: authselect_result
+    changed_when: "'already enabled' not in authselect_result.stdout"
+
+  - name: Apply authselect changes
+    command: authselect apply-changes
+    when: authselect_result.changed
+
+  - name: Ensure fingerprint polkit rule exists
+    template:
+      src: fprintd-polkit.rules
+      dest: /etc/polkit-1/rules.d/49-fprintd.rules
+      owner: root
+      group: root
+      mode: 0644
+  become: yes
