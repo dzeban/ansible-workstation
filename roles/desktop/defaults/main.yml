@@ -6,3 +6,63 @@ desktop_keyboard_delay: 200
 
 desktop_fingerprint_group:
   Fedora: wheel
+
+desktop_packages:
+  Fedora:
+    - xorg-x11-drv-synaptics-legacy
+    - xset
+    - xsetroot
+    - clipit
+    - xclip  # for Vim clipboard
+    - xkill
+    - xsecurelock
+    - xss-lock
+    - fprintd
+    - libfprint
+    - pamtester
+    - arandr
+    - autorandr
+    - polybar
+    - dunst
+    - rofi
+    - alacritty
+    - google-roboto-mono-fonts
+    - source-foundry-hack-fonts
+    - system-config-printer
+    - pavucontrol
+    - brightnessctl
+    - gitk
+    - meld
+    - redshift
+    - redshift-gtk
+    - scrot
+    - maim  # scrot replacement (TODO: Why? Because of Debian?)
+    - geeqie
+    - vlc
+    - pinta
+  Ubuntu:
+    - xserver-xorg-input-synaptics  #
+    - x11-xserver-utils  # xset, xsetroot
+    - x11-utils  # xkill
+    - blueman
+    - xsecurelock
+    - xss-lock
+    - arandr
+    - autorandr
+    - polybar
+    - dunst
+    - rofi
+    - alacritty
+    - fonts-roboto  #
+    - fonts-hack  #
+    - system-config-printer
+    - pavucontrol
+    - brightnessctl
+    - gitk
+    - meld
+    - network-manager-openvpn-gnome  #
+    - scrot
+    - maim  # scrot replacement (TODO: Why? Because of Debian?)
+    - geeqie
+    - vlc
+    - pinta

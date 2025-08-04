@@ -25,7 +25,8 @@
         name: "{{ item }}"
         remote: flathub
       loop: "{{ packages_flatpak }}"
-  when: host_mode == "home"
+      when: 
+  when: packages_flatpak is defined and host_mode == "home"
 
 - name: Install python packages
   command: python3 -m pip install --upgrade {{ item }}

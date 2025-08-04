@@ -1,4 +1,10 @@
 ---
+- name: Install desktop packages
+  package:
+    name: "{{ lookup('list', desktop_packages[ansible_distribution]) }}"
+    state: latest
+  become: yes
+
 - include_tasks: touchpad.yml
 - include_tasks: lightdm.yml
 - include_tasks: fingerprint.yml
