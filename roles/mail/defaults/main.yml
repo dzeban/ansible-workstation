@@ -1,0 +1,16 @@
+---
+mail_packages:
+  Fedora:
+    - aerc
+    - isync
+    - notmuch
+
+mail_dir: "{{ ansible_user_dir }}/mail"
+
+# The following vars are overriden in inventory
+mail_sync_user: "{{ ansible_user_name }}"
+mail_sync_pass_secret_name: mail
+mail_sync_inbox_label: inbox
+mail_sync_extra_labels: []
+mail_smtp_url: smtp://username@smtp.exapmle.com
+mail_smtp_cred_cmd: pass smtp

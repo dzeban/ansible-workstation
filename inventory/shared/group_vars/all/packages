@@ -30,6 +30,7 @@ packages_system:
     - ansible-lint
     - visidata
     - libfuse2
+    - pass
   Fedora:
     - sysstat
     - strace
@@ -53,6 +54,7 @@ packages_system:
     - wireguard-tools
     - entr
     - telnet
+    - pass
 
 packages_python:
   - http-prompt

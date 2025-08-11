@@ -1,0 +1,45 @@
+---
+- name: Install mail packages
+  package:
+    name: "{{ lookup('list', mail_packages[ansible_distribution]) }}"
+    state: latest
+  become: yes
+
+- name: Ensure mail dir
+  file:
+    path: "{{ mail_dir }}"
+    state: directory
+    mode: '0700'
+
+- name: Deploy mbsync config
+  template:
+    src: mbsyncrc
+    dest: "{{ ansible_user_dir }}/.mbsyncrc"
+    mode: '0600'
+
+- name: Deploy systemd service unit for mbsync
+  template:
+    src: mbsync.service
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/mbsync.service"
+    mode: '0644'
+
+- name: Deploy systemd timer unit for mbsync
+  template:
+    src: mbsync.timer
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/mbsync.timer"
+    mode: '0644'
+
+- name: Reload user systemd and enable timer
+  systemd:
+    daemon_reload: yes
+    name: mbsync.timer
+    enabled: yes
+    state: started
+    scope: user
+
+- name: Deploy aerc account config
+  template:
+    src: aerc-account.conf
+    dest: "{{ ansible_user_dir }}/.config/aerc/accounts.conf"
+    mode: '0600'
+

@@ -1,0 +1,46 @@
+# General settings
+SyncState ~/.mbsync/state
+
+# Account: Gmail
+IMAPAccount gmail
+Host imap.gmail.com
+User {{ mail_sync_user }}
+PassCmd "pass gmail"
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Local store
+MaildirStore local
+Path ~/mail/
+Inbox ~/mail/inbox
+SubFolders Verbatim
+
+# Remote store: Gmail
+IMAPStore gmail-remote
+Account gmail
+
+# Channel: {{ mail_sync_inbox_label }} label → local Inbox
+Channel inbox
+Master :gmail-remote:"{{ mail_sync_inbox_label }}"
+Slave :local:Inbox
+Create Slave
+SyncState *
+
+# Extra channels
+{% for label in mail_sync_extra_labels %}
+# Channel: <{{ label }}> label → local {{ label }}/
+Channel {{ label }}
+Master :gmail-remote:"{{ label }}"
+Slave :local:{{ label }}
+Create Both
+Sync All
+Patterns *
+SyncState *
+{% endfor %}
+
+# Group for all channels
+Group gmail
+Channel inbox
+{% for label in mail_sync_extra_labels %}
+Channel {{ label }}
+{% endfor %}

@@ -6,3 +6,14 @@ neovim_bin: "{{ ansible_user_dir }}/bin/nvim"
 
 terraform_install_dir: "{{ ansible_user_dir }}/bin"
 terraform_download_dir: "{{ ansible_user_dir }}/soft"
+
+mail_sync_user: alex.dzyoba@gmail.com
+mail_sync_pass_secret_name: gmail
+mail_sync_inbox_label: "dzyoba.com"
+mail_sync_extra_labels:
+- dev
+
+mail_name: "Alex Dzyoba"
+mail_address: "alex@dzyoba.com"
+mail_smtp_cred_cmd: pass smtp/password
+mail_smtp_url: smtp://2NLK2M22Me@send.simplemailservice.eu
