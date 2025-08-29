@@ -11,6 +11,9 @@
     update: no
     recursive: true
 
+- import_tasks: redshift.yml
+  when: ansible_distribution == "Ubuntu"
+
 - name: Run homemmaker
   command: make {{ host_mode }}
   args:

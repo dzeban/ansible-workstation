@@ -1,0 +1,10 @@
+# Fix redshift AppArmor installed by Ubuntu package
+- name: Put override allowing redshift access to config in {{ dotfiles_path }}
+  template:
+    src: redshift.apparmor.override
+    dest: /etc/apparmor.d/local/usr.bin.redshift
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reload_apparmor_redshift
+  become: yes

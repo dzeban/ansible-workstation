@@ -1,0 +1,3 @@
+# {{ ansible_managed }}
+# Allow access to actual config that ~/.config/redshift.conf is symlinked to
+owner {{ dotfiles_path }}/redshift.conf r,
