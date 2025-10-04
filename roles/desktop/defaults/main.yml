@@ -4,9 +4,6 @@ desktop_keyboard_indicator_foreground_color: "100 100 100"
 desktop_keyboard_repeat_rate: 60
 desktop_keyboard_delay: 200
 
-desktop_fingerprint_group:
-  Fedora: wheel
-
 desktop_packages:
   Fedora:
     - xorg-x11-drv-synaptics-legacy
@@ -17,8 +14,6 @@ desktop_packages:
     - xkill
     - xsecurelock
     - xss-lock
-    - fprintd
-    - libfprint
     - pamtester
     - arandr
     - autorandr
@@ -66,3 +61,15 @@ desktop_packages:
     - geeqie
     - vlc
     - pinta
+desktop_fonts_copr: gombosg/better_fonts
+desktop_fonts_packages: 
+  - fontconfig-enhanced-defaults 
+  - fontconfig-font-replacements
+desktop_fonts:
+  main: Roboto 11
+  mono: Roboto Mono 11
+desktop_notification_theme: coco
+desktop_terminal_font: "Inconsolata 14"
+
+desktop_background_filename: "/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Dark-no-logo.png"
+>>>>>>> parent of 6ef832f (desktop: Configure fingerprint reader authentication)
