@@ -5,5 +5,8 @@
     state: latest
   become: yes
 
+- include_tasks: fonts.yml
 - include_tasks: touchpad.yml
+  when: host_mode == "home"
 - include_tasks: lightdm.yml
+  when: host_mode == "home"

@@ -13,7 +13,6 @@
 
     - import_role: name=desktop
       tags: desktop
-      when: host_mode == "home"
 
     - import_role: name=mail
       tags: mail

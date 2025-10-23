@@ -1,0 +1,19 @@
+---
+- name: Ensure custom fonts directory
+  file:
+    path: "{{ desktop_custom_fonts_dir }}"
+    state: directory
+
+- name: Download and unpack custom fonts
+  unarchive:
+    remote_src: yes
+    src: "{{ item.url }}"
+    dest: "{{ desktop_custom_fonts_dir }}"
+    creates: "{{ desktop_custom_fonts_dir }}/{{ item.creates }}"
+  loop: "{{ desktop_custom_fonts }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Update font cache
+  command: fc-cache -f -v
+  changed_when: false
