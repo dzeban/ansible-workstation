@@ -71,10 +71,11 @@ desktop_fonts:
 desktop_notification_theme: coco
 desktop_terminal_font: "Inconsolata 14"
 
-desktop_nerd_font_version: "v3.4.0"
-desktop_nerd_font_url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ desktop_nerd_font_version }}/Hack.zip"
-desktop_nerd_font_dir: "{{ ansible_user_dir }}/.local/share/fonts"
-desktop_nerd_font_zip: "{{ desktop_nerd_font_dir }}/Hack.zip"
+desktop_custom_fonts_dir: "{{ ansible_user_dir }}/.local/share/fonts"
+desktop_custom_fonts:
+  - name: "Hack Nerd Font"
+    url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.zip"
+    creates: "HackNerdFont-Regular.ttf"
 
 desktop_background_filename: "/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Dark-no-logo.png"
 >>>>>>> parent of 6ef832f (desktop: Configure fingerprint reader authentication)
