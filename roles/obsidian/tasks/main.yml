@@ -1,0 +1,19 @@
+---
+- name: Ensure install directory exists
+  file:
+    path: "{{ obsidian_install_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Download Obsidian AppImage
+  get_url:
+    url: "https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian_version }}/Obsidian-{{ obsidian_version }}.AppImage"
+    dest: "{{ obsidian_install_dir }}/obsidian"
+    mode: '0755'
+
+- name: Clone notes repository
+  git:
+    repo: "{{ obsidian_notes_repo }}"
+    dest: "{{ obsidian_notes_dir }}"
+    update: yes
+    accept_hostkey: yes

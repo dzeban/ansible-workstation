@@ -1,0 +1,5 @@
+---
+obsidian_version: "1.10.0"
+obsidian_install_dir: "{{ ansible_user_dir }}/bin"
+obsidian_notes_repo: "https://github.com/example/notes.git"
+obsidian_notes_dir: "{{ ansible_user_dir }}/notes"
