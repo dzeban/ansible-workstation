@@ -1,6 +1,7 @@
 ---
 neovim_version: "stable"
 neovim_appimage_url: "https://github.com/neovim/neovim/releases/download/{{ neovim_version }}/nvim-linux-x86_64.appimage"
-neovim_dest_dir: "{{ ansible_user_dir }}"
+neovim_dest_dir: "{{ ansible_user_dir }}/soft"
 neovim_appimage_path: "{{ neovim_dest_dir }}/nvim.appimage"
 neovim_bin: /usr/local/bin/nvim
+obsidian_desktop_file_path: "{{ ansible_user_dir }}/.local/share/applications/obsidian.desktop"
