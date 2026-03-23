@@ -25,7 +25,7 @@
         name: "{{ item }}"
         remote: flathub
       loop: "{{ packages_flatpak }}"
-      when: 
+      when:
   when: packages_flatpak is defined and host_mode == "home"
 
 - name: Install python packages
@@ -34,5 +34,5 @@
   when: ansible_distribution != "Ubuntu"
 
 - import_tasks: bin.yml
-  when: packages_bin_binaries
+  when: packages_bin_binaries | length > 0
   tags: bin
