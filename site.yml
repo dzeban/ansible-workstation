@@ -14,6 +14,9 @@
     - import_role: name=desktop
       tags: desktop
 
+    - import_role: name=kitty
+      tags: kitty
+
     - import_role: name=mail
       tags: mail
       when: host_mode == "home"

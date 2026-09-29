@@ -1,0 +1,7 @@
+---
+kitty_version: "0.49.1"
+kitty_install_dir: "/opt/kitty/{{ kitty_version }}"
+kitty_binary_path: "{{ kitty_install_dir }}/bin"
+kitty_icon_path: "{{ kitty_install_dir }}/share/icons/hicolor/256x256/apps/kitty.png"
+kitty_archive_path: "/opt/kitty/kitty-{{ kitty_version }}-{{ ansible_architecture }}.txz"
+kitty_archive_url: "https://github.com/kovidgoyal/kitty/releases/download/v{{ kitty_version }}/kitty-{{ kitty_version }}-{{ ansible_architecture }}.txz"

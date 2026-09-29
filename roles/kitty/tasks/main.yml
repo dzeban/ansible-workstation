@@ -1,0 +1,57 @@
+---
+- name: Ensure kitty install directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ kitty_install_dir }}"
+  become: yes
+
+- name: Unpack kitty binary bundle
+  unarchive:
+    src: "{{ kitty_archive_url }}"
+    dest: "{{ kitty_install_dir }}"
+    remote_src: yes
+    creates: "{{ kitty_binary_path }}/kitty"
+  become: yes
+
+- name: Link kitty executable
+  file:
+    src: "{{ kitty_binary_path }}/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    state: link
+  become: yes
+  loop:
+    - kitty
+    - kitten
+
+- name: Ensure user desktop directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "{{ ansible_user_dir }}/.local/share/applications"
+    - "{{ ansible_user_dir }}/.config"
+
+- name: Read bundled kitty desktop entries
+  slurp:
+    src: "{{ kitty_install_dir }}/share/applications/{{ item }}"
+  loop:
+    - kitty.desktop
+    - kitty-open.desktop
+  register: kitty_desktop_entries
+
+- name: Install kitty desktop entries with absolute paths
+  copy:
+    src: "{{ kitty_install_dir }}/share/applications/"
+    dest: "{{ ansible_user_dir }}/.local/share/applications/"
+    mode: '0644'
+
+- name: Add kitty to preferred xdg terminal
+  lineinfile:
+    path: "{{ ansible_user_dir }}/.config/xdg-terminals.list"
+    regex: "^kitty.desktop"
+    line: "kitty.desktop\n"
+    create: true
