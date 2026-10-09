@@ -1,2 +1,2 @@
 ---
-dotfiles_path: "{{ ansible_user_dir }}/dev/dotfiles"
+dotfiles_path: "{{ ansible_user_dir }}/src/dotfiles"
