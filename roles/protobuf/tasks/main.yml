@@ -1,0 +1,22 @@
+---
+- name: Ensure install directory
+  file:
+    path: "{{ protobuf_install_location }}"
+    state: directory
+    mode: 0755
+  become: yes
+
+- name: Unpack protoc
+  unarchive:
+    remote_src: yes
+    src: "{{ protobuf_download_url }}"
+    dest: "{{ protobuf_install_location }}"
+    creates: "{{ protobuf_install_location }}/bin/protoc"
+  become: yes
+
+- name: Link protoc
+  file:
+    state: link
+    src: "{{ protobuf_install_location }}/bin/protoc"
+    dest: "{{ protobuf_protoc_bin }}"
+  become: yes

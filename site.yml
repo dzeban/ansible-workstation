@@ -8,6 +8,9 @@
     - import_role: name=packages
       tags: packages
 
+    - import_role: name=protobuf
+      tags: protobuf
+
     - import_role: name=dotfiles
       tags: dotfiles
 

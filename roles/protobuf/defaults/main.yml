@@ -1,0 +1,7 @@
+---
+protobuf_version: "36.2"
+protobuf_platform: linux-x86_64
+protobuf_download_url: "https://github.com/protocolbuffers/protobuf/releases/download/v{{ protobuf_version }}/protoc-{{ protobuf_version }}-{{ protobuf_platform }}.zip"
+protobuf_install_dir: /opt/protobuf
+protobuf_install_location: "{{ protobuf_install_dir }}/{{ protobuf_version }}"
+protobuf_protoc_bin: /usr/local/bin/protoc
