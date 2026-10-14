@@ -1,0 +1,16 @@
+---
+# Apply roles by name, independent of site.yml:
+#
+#   ansible-playbook role.yml -e run_roles=neovim,kitty
+#
+# Conditions from site.yml (host_mode, distribution) do not apply here: an
+# explicit role request runs that role.
+- hosts: all
+  tasks:
+    - name: Apply roles
+      include_role:
+        name: "{{ run_role }}"
+      loop: "{{ run_roles.split(',') }}"
+      # Roles use "item" in their own loops.
+      loop_control:
+        loop_var: run_role

@@ -55,6 +55,7 @@ packages_system:
     - entr
     - telnet
     - pass
+    - uv
 
 packages_python:
   - http-prompt
