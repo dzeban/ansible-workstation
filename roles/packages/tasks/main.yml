@@ -1,7 +1,7 @@
 ---
 - name: Install packages
   package:
-    name: "{{ lookup('list', packages_system[ansible_distribution]) }}"
+    name: "{{ lookup('list', packages_system[ansible_facts['distribution']]) }}"
     state: latest
   become: yes
 
@@ -12,7 +12,7 @@
     - name: Install flatpak
       apt:
         name: flatpak
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_facts['distribution'] == "Ubuntu"
       # On Fedora/RedHat it's installed by default
 
     - name: Add flathub remote
@@ -26,12 +26,13 @@
         remote: flathub
       loop: "{{ packages_flatpak }}"
       when:
-  when: packages_flatpak is defined and host_mode == "home"
+  when: packages_flatpak is defined
 
 - name: Install python packages
-  command: python3 -m pip install --upgrade {{ item }}
+  command: uv tool install --upgrade {{ item }}
   loop: "{{ packages_python }}"
-  when: ansible_distribution != "Ubuntu"
+  when: ansible_facts['distribution'] != "Ubuntu"
+  tags: python
 
 - import_tasks: bin.yml
   when: packages_bin_binaries | length > 0

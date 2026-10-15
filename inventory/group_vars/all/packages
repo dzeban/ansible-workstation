@@ -12,23 +12,18 @@ packages_system:
     - clangd
     - patch
     - luajit
-    - redshift
-    - redshift-gtk
     - mutt
     - perl  # shasum
-    - clipit
-    - xclip  # for Vim clipboard
-    - network-manager-openvpn  #
-    - universal-ctags  # ctags
+    - network-manager-openvpn
+    - universal-ctags
     - mc
     - ripgrep
     - jq
     - fzf
-    - wireguard  #
+    - wireguard
     - entr
     - telnet
     - ansible-lint
-    - visidata
     - libfuse2
     - pass
   Fedora:
