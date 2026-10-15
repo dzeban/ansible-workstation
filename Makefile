@@ -12,7 +12,7 @@ HOST ?= $(shell hostname -s)
 
 DISTRO := $(shell . /etc/os-release && echo $$ID)
 
-PLAYBOOK := ansible-playbook -i inventory -l $(HOST) -K $(ARGS)
+PLAYBOOK := ansible-playbook -l $(HOST) -K $(ARGS)
 
 # The redirect forces make to run a shell, "command" is a shell builtin.
 ANSIBLE_INSTALLED := $(shell command -v ansible-playbook 2>/dev/null)
