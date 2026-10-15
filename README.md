@@ -4,9 +4,13 @@ Bootstrap my workstation with Ansible
 
 ## Quickstart
 
-* `./run.sh reqs`
-* `./run.sh home`
+* `make`
 
-## TODO
+`make` applies the configuration for the current hostname, using group vars from
+inventory.
 
-- [ ] Move i3, polybar, Xresources, autorandr configuration to desktop role
+Other invocations:
+
+* `make packages dotfiles` - apply only the given roles
+* `make HOST=slate` - apply the configuration of another host
+* `make ARGS=-vv` - pass extra options to `ansible-playbook`
