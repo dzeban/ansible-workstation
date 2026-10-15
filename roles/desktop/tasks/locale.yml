@@ -1,0 +1,27 @@
+---
+- name: Install English locales (Fedora)
+  dnf:
+    name: glibc-langpack-en
+    state: present
+  become: yes
+  when: ansible_facts['distribution'] == "Fedora"
+
+- name: Generate locales (Ubuntu)
+  community.general.locale_gen:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ desktop_locale.values() | unique }}"
+  become: yes
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+# set-locale replaces the whole set, unlisted LC_* variables are cleared.
+# The call is idempotent, so it runs every time instead of parsing the
+# current state.
+- name: Set system locale
+  command:
+    argv:
+      - localectl
+      - set-locale
+      - "LANG={{ desktop_locale.LANG }}"
+      - "LC_TIME={{ desktop_locale.LC_TIME }}"
+  become: yes

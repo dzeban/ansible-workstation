@@ -1,0 +1,41 @@
+---
+- name: Install greetd and tuigreet
+  package:
+    name:
+      - greetd
+      - tuigreet
+    state: present
+  become: yes
+
+- name: Render greetd config
+  template:
+    src: greetd.toml
+    dest: /etc/greetd/config.toml
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: Gather services
+  service_facts:
+
+# display-manager.service is an alias of the current display manager.
+# Enabling greetd fails while the alias points to another unit.
+- name: Disable other display managers
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+  loop:
+    - sddm
+    - lightdm
+    - gdm
+  when: (item + ".service") in ansible_facts['services']
+  become: yes
+
+# No state=started: starting greetd kills the current graphical session. The
+# switch happens on the next boot.
+- name: Enable greetd
+  systemd:
+    name: greetd
+    enabled: yes
+  become: yes

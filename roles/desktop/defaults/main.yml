@@ -1,80 +1,36 @@
 ---
-desktop_keyboard_options: "['grp\tgrp:alt_shift_toggle','caps\tcaps:ctrl_modifier']"
-desktop_keyboard_indicator_foreground_color: "100 100 100"
-desktop_keyboard_repeat_rate: 60
-desktop_keyboard_delay: 200
-
-desktop_packages:
+desktop_sway_packages:
   Fedora:
-    - xorg-x11-drv-synaptics-legacy
-    - xset
-    - xsetroot
-    - clipit
-    - xclip  # for Vim clipboard
-    - xkill
-    - xsecurelock
-    - xss-lock
-    - pamtester
-    - arandr
-    - autorandr
-    - polybar
-    - dunst
-    - rofi
-    - alacritty
-    - google-roboto-mono-fonts
-    - source-foundry-hack-fonts
-    - system-config-printer
-    - pavucontrol
-    - brightnessctl
-    - gitk
-    - meld
-    - redshift
-    - redshift-gtk
-    - scrot
-    - maim  # scrot replacement (TODO: Why? Because of Debian?)
-    - geeqie
-    - vlc
-    - pinta
+    - "@swaywm"
+    - "@swaywm-extended"
+  # TODO: Stub for Ubuntu 26.04. Extend after the first install.
   Ubuntu:
-    - xserver-xorg-input-synaptics  #
-    - x11-xserver-utils  # xset, xsetroot
-    - x11-utils  # xkill
-    - blueman
-    - xsecurelock
-    - xss-lock
-    - arandr
-    - autorandr
-    - polybar
-    - dunst
-    - rofi
-    - alacritty
-    - fonts-roboto  #
-    - fonts-hack  #
-    - system-config-printer
-    - pavucontrol
-    - brightnessctl
-    - gitk
-    - meld
-    - network-manager-openvpn-gnome  #
-    - scrot
-    - maim  # scrot replacement (TODO: Why? Because of Debian?)
-    - geeqie
-    - vlc
-    - pinta
-desktop_fonts_copr: gombosg/better_fonts
-desktop_fonts_packages: 
-  - fontconfig-enhanced-defaults 
-  - fontconfig-font-replacements
-desktop_fonts:
-  main: Roboto 11
-  mono: Roboto Mono 11
-desktop_notification_theme: coco
-desktop_terminal_font: "Inconsolata 14"
+    - sway
+    - swaybg
+    - swayidle
+    - swaylock
+    - xdg-desktop-portal-wlr
+    - xdg-desktop-portal-gtk
+    - wl-clipboard
+# swaywm-extended pulls sddm, greetd replaces it on hosts that select it.
+desktop_sway_exclude:
+  - sddm
+  - sddm-wayland-sway
 
-desktop_custom_fonts_dir: "{{ ansible_user_dir }}/.local/share/fonts"
+desktop_noctalia_deb_keyring: "https://pkg.noctalia.dev/deb/nickh-archive-keyring.deb"
+desktop_noctalia_deb_sources: "https://pkg.noctalia.dev/deb/noctalia-{{ ansible_facts['distribution_release'] }}.sources"
+
+desktop_locale:
+  LANG: en_IE.UTF-8
+  LC_TIME: en_DK.UTF-8
+
+# Empty reuses whatever is set.
+# "greetd" value is supported.
+desktop_display_manager: ""
+desktop_greetd_command: tuigreet --time --remember --remember-session --sessions /usr/share/wayland-sessions
+
+desktop_custom_fonts_dir: "{{ ansible_facts['user_dir'] }}/.local/share/fonts"
 desktop_custom_fonts:
   - name: "Hack Nerd Font"
     url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.zip"
     creates: "HackNerdFont-Regular.ttf"
-
-desktop_background_filename: "/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Dark-no-logo.png"

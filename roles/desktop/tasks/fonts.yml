@@ -17,3 +17,40 @@
 - name: Update font cache
   command: fc-cache -f -v
   changed_when: false
+
+# User config is loaded by 50-user.conf on Fedora and Ubuntu. Its "assign"
+# rules override the 10-* presets in /etc/fonts/conf.d.
+- name: Ensure fontconfig directory
+  file:
+    path: "{{ ansible_facts['user_dir'] }}/.config/fontconfig"
+    state: directory
+
+- name: Copy fontconfig config
+  copy:
+    src: fonts.conf
+    dest: "{{ ansible_facts['user_dir'] }}/.config/fontconfig/fonts.conf"
+    mode: 0644
+
+- name: Install dconf module dependencies
+  package:
+    name:
+      - python3-psutil
+      - "{{ 'dconf-cli' if ansible_facts['distribution'] == 'Ubuntu' else 'dconf' }}"
+    state: present
+  become: yes
+
+# GTK does not read fontconfig for these settings. dconf needs the session
+# D-Bus, so run the playbook from the graphical session.
+- name: Configure GTK font rendering
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - key: font-antialiasing
+      value: "'rgba'"
+    - key: font-rgba-order
+      value: "'rgb'"
+    - key: font-hinting
+      value: "'slight'"
+  loop_control:
+    label: "{{ item.key }}"

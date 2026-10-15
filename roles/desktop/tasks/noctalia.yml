@@ -1,0 +1,32 @@
+---
+- name: Install noctalia (Fedora)
+  dnf:
+    name: noctalia
+    state: present
+  become: yes
+  when: ansible_facts['distribution'] == "Fedora"
+
+- name: Install noctalia (Ubuntu)
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+      # Noctalia releases start from 26.04
+    - ansible_facts['distribution_version'] is version('26.04', '>=')
+  become: yes
+  block:
+    - name: Install noctalia repo keyring
+      apt:
+        deb: "{{ desktop_noctalia_deb_keyring }}"
+
+    - name: Add noctalia repo
+      get_url:
+        url: "{{ desktop_noctalia_deb_sources }}"
+        dest: /etc/apt/sources.list.d/noctalia.sources
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Install noctalia
+      apt:
+        name: noctalia
+        state: present
+        update_cache: yes

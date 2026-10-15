@@ -1,0 +1,14 @@
+---
+- name: Install sway packages (Fedora)
+  dnf:
+    name: "{{ desktop_sway_packages.Fedora }}"
+    exclude: "{{ desktop_sway_exclude }}"
+  become: yes
+  when: ansible_facts['distribution'] == "Fedora"
+
+- name: Install sway packages (Ubuntu)
+  apt:
+    name: "{{ desktop_sway_packages.Ubuntu }}"
+    state: present
+  become: yes
+  when: ansible_facts['distribution'] == "Ubuntu"

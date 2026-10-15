@@ -1,12 +1,7 @@
 ---
-- name: Install desktop packages
-  package:
-    name: "{{ lookup('list', desktop_packages[ansible_distribution]) }}"
-    state: latest
-  become: yes
-
+- include_tasks: sway.yml
+- include_tasks: noctalia.yml
+- include_tasks: greetd.yml
+  when: desktop_display_manager == "greetd"
+- include_tasks: locale.yml
 - include_tasks: fonts.yml
-- include_tasks: touchpad.yml
-  when: host_mode == "home"
-- include_tasks: lightdm.yml
-  when: host_mode == "home"
