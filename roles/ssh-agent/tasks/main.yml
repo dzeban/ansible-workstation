@@ -1,18 +1,26 @@
 ---
-- name: Ensure systemd service dir
+# openssh-clients on Fedora and openssh-client on Ubuntu 26.04 ship
+# ssh-agent.socket and ssh-agent.service user units. The socket starts the
+# agent on first connection. SSH_AUTH_SOCK must point to
+# $XDG_RUNTIME_DIR/ssh-agent.socket (see ~/.profile).
+
+- name: Ensure ssh-agent socket drop-in dir
   file:
-    path: "{{ ansible_user_dir }}/.config/systemd/user"
+    path: "{{ ansible_user_dir }}/.config/systemd/user/ssh-agent.socket.d"
     state: directory
+  when: ansible_distribution == "Ubuntu"
 
-- name: Render ssh-agent service
+- name: Set ssh-agent socket path
   copy:
-    src: ssh-agent.service
-    dest: "{{ ansible_user_dir }}/.config/systemd/user/ssh-agent.service"
+    src: ssh-agent.socket.conf
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/ssh-agent.socket.d/path.conf"
+  register: ssh_agent_dropin
+  when: ansible_distribution == "Ubuntu"
 
-- name: Enable and run ssh-agent service
+# A running socket keeps the old listen path until restart.
+- name: Enable and start ssh-agent socket
   systemd:
     scope: user
-    name: ssh-agent
-    state: started
+    name: ssh-agent.socket
+    state: "{{ 'restarted' if ssh_agent_dropin is changed else 'started' }}"
     enabled: yes
-    daemon_reload: yes
