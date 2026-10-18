@@ -1,0 +1,13 @@
+---
+# gnupg2-gpg-agent on Fedora and gpg-agent on Ubuntu 26.04 ship
+# gpg-agent.socket and gpg-agent.service user units. Without the socket, gpg
+# starts the agent on demand inside the caller's cgroup. For a service like
+# mbsync, systemd kills the agent on service exit and the passphrase cache is
+# lost.
+
+- name: Enable and start gpg-agent socket
+  systemd:
+    scope: user
+    name: gpg-agent.socket
+    state: started
+    enabled: yes

@@ -2,10 +2,6 @@
 - hosts: all
   tasks:
     - import_role: name=packages
-      tags: packages
-
     - import_role: name=desktop
-      tags: desktop
-
     - import_role: name=ssh-agent
-      tags: ssh
+    - import_role: name=gpg-agent
