@@ -1,0 +1,22 @@
+---
+# Allow access to HID devices, e.g. to nuphy keyboard from configurator running
+# in browser. By default HID devices allows root access. This role configures
+# access to local admin group so that user can access it.
+
+- name: Render udev rule
+  template:
+    src: 99-hidraw.rules.j2
+    dest: /etc/udev/rules.d/99-hidraw.rules
+    mode: "0644"
+  register: hidraw_rules
+  become: yes
+
+- name: Reload udev rules
+  command: udevadm control --reload
+  when: hidraw_rules is changed
+  become: yes
+
+- name: Apply udev rules to present hidraw devices
+  command: udevadm trigger --subsystem-match=hidraw --action=change
+  when: hidraw_rules is changed
+  become: yes

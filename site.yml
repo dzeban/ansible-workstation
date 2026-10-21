@@ -5,3 +5,4 @@
     - import_role: name=desktop
     - import_role: name=ssh-agent
     - import_role: name=gpg-agent
+    - import_role: name=hidraw

@@ -1,0 +1,1 @@
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", GROUP="{{ 'sudo' if ansible_distribution == 'Ubuntu' else 'wheel' }}", MODE="0660"
